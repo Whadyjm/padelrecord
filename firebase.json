@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "padel-record",
     "public": "build/web",
     "ignore": [
       "firebase.json",

@@ -1,50 +1,26 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:padel_record/models/playerModel.dart';
+import 'package:padel_record/provider/playerProvider.dart';
 import 'package:padel_record/view/gameScreen.dart';
+import 'package:provider/provider.dart';
 
-class PlayerInputScreen extends StatefulWidget {
+class PlayerInputScreen extends StatelessWidget {
   const PlayerInputScreen({super.key});
 
-  @override
-  _PlayerInputScreenState createState() => _PlayerInputScreenState();
-}
-
-class _PlayerInputScreenState extends State<PlayerInputScreen> {
-  final List<String> _players = ['whady', 'ale', 'mari', 'emma'];
-  final TextEditingController _controller = TextEditingController();
-
-  void _addPlayer() {
-    if (_controller.text.isNotEmpty) {
-      setState(() {
-        _players.add(_controller.text);
-        _controller.clear();
-      });
-    }
-  }
-
-  void _startGame() {
-    if (_players.length >= 4) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => GameScreen(players: _players),
-        ),
-      );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Se necesitan al menos 4 jugadores')),
-      );
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
+
+    final playerProvider = Provider.of<PlayerProvider>(context);
+    final TextEditingController nombreController = TextEditingController();
+
     return Scaffold(
       backgroundColor: Colors.grey.shade300,
       appBar: AppBar(
         backgroundColor: Colors.grey.shade300,
-        title: const Text('Ingresar Jugadores'),
+        title: const Text('Ingresar jugadores'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -55,25 +31,33 @@ class _PlayerInputScreenState extends State<PlayerInputScreen> {
                 SizedBox(
                   width: 250,
                   child: TextField(
-                    controller: _controller,
+                    controller: nombreController,
                     decoration: const InputDecoration(labelText: 'Nombre del jugador'),
                   ),
                 ),
                 const SizedBox(width: 10,),
-                MaterialButton(
-                  onPressed: (){
-                    _addPlayer();
-                  },
-                  child: Container(
+                Container(
                       height: 50,
                       width: 50,
                       decoration: BoxDecoration(
                           color: Colors.lightGreenAccent,
                           borderRadius: BorderRadius.circular(8)
                       ),
-                      child: Icon(Icons.add, color: Colors.grey.shade700,)
+                      child: IconButton(
+                          onPressed: (){
+                            if (nombreController.text.isEmpty) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Debes agregar un nombre'),
+                              ),
+                            );
+                            } else {
+                              playerProvider.addPlayer(nombreController.text);
+                              nombreController.clear();
+                            }
+                          },
+                          icon: Icon(Icons.add, color: Colors.grey.shade700,)),
                   ),
-                ),
               ],
             ),
             const SizedBox(height: 20),
@@ -87,37 +71,53 @@ class _PlayerInputScreenState extends State<PlayerInputScreen> {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: _players.length,
+                itemCount: playerProvider.players.length,
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(_players[index], style: const TextStyle(fontWeight: FontWeight.w700),),
-                        TextButton(
-                          onPressed: () {
-                          setState(() {
-                            _players.remove(_players[index]);
-                          });
-                        }, child: const Text('-', style: TextStyle(color: Colors.redAccent, fontSize: 40),),)
-                      ],
-                    ),
+
+                  final player = playerProvider.players[index];
+
+                  return Column(
+                    children: [
+                      ListTile(
+                        title: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(player.nombre, style: const TextStyle(fontWeight: FontWeight.w700),),
+                            TextButton(
+                              onPressed: () {
+                              playerProvider.removePlayer(player);
+                            }, child: const Text('-', style: TextStyle(color: Colors.redAccent, fontSize: 40),),)
+                          ],
+                        ),
+                      ),
+                    ],
                   );
                 },
               ),
             ),
             MaterialButton(
               onPressed: (){
-                _startGame();
+                if (playerProvider.players.length >= 4){
+                  playerProvider.assignTeams();
+                  Navigator.push(context, MaterialPageRoute(builder: (context){
+                    return GameScreen();
+                  }));
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Se necesitan al menos 4 jugadores'),
+                    ),
+                  );
+                }
               },
               child: Container(
                   height: 50,
-                  width: 150,
+                  width: 250,
                   decoration: BoxDecoration(
                       color: Colors.lightGreenAccent,
-                      borderRadius: BorderRadius.circular(8)
+                      borderRadius: BorderRadius.circular(12)
                   ),
-                  child: Center(child: Text('Iniciar Partida', style: TextStyle(fontSize: 18, color: Colors.grey.shade700, fontWeight: FontWeight.bold),))),
+                  child: Center(child: Text('Iniciar partida', style: TextStyle(fontSize: 18, color: Colors.grey.shade700, fontWeight: FontWeight.bold),))),
             ),
           ],
         ),
