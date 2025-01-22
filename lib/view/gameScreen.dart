@@ -84,24 +84,24 @@ class _GameScreenState extends State<GameScreen> {
                   ),
                 ),
                 Container(
-                    height: 60,
-                    width: 60,
+                    height: 50,
+                    width: 50,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
                     color: Colors.black,
                     ),
                     child: Center(child: Text('$_scoreA',
-                      style: const TextStyle(color: Colors.white, fontSize: 40),))),
+                      style: const TextStyle(color: Colors.white, fontSize: 25),))),
                 const Text('VS', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
                 Container(
-                    height: 60,
-                    width: 60,
+                    height: 50,
+                    width: 50,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
                       color: Colors.black,
                     ),
                     child: Center(child: Text('$_scoreB',
-                      style: const TextStyle(color: Colors.white, fontSize: 40),))),
+                      style: const TextStyle(color: Colors.white, fontSize: 25),))),
                 Container(
                   height: 50,
                   width: 100,
@@ -120,8 +120,6 @@ class _GameScreenState extends State<GameScreen> {
               ],
             ),
           ),
-          const SizedBox(height: 20,),
-          const SizedBox(height: 50,),
           Padding(
             padding: const EdgeInsets.only(top: 20, right: 30, left: 30),
             child: Row(
@@ -147,7 +145,7 @@ class _GameScreenState extends State<GameScreen> {
                   height: 50,
                   width: 50,
                   decoration: BoxDecoration(
-                      color: Colors.lightGreenAccent,
+                      color: Colors.blue,
                       borderRadius: BorderRadius.circular(12)
                   ),
                   child: IconButton(
@@ -166,13 +164,13 @@ class _GameScreenState extends State<GameScreen> {
                           }
                         });
                       },
-                      icon: Icon(Icons.add, color: Colors.grey.shade700,)),
+                      icon: const Icon(Icons.add, color: Colors.white,)),
                 ),
                 Container(
                   height: 50,
                   width: 50,
                   decoration: BoxDecoration(
-                      color: Colors.lightGreenAccent,
+                      color: Colors.blue,
                       borderRadius: BorderRadius.circular(12)
                   ),
                   child: IconButton(
@@ -191,7 +189,7 @@ class _GameScreenState extends State<GameScreen> {
                           }
                         });
                       },
-                      icon: Icon(Icons.add, color: Colors.grey.shade700,)),
+                      icon: const Icon(Icons.add, color: Colors.white,)),
                 ),
                 IconButton(onPressed: (){
                   setState(() {
