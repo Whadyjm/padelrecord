@@ -56,7 +56,7 @@ class PlayerInputScreen extends StatelessWidget {
                               nombreController.clear();
                             }
                           },
-                          icon: Icon(Icons.add, color: Colors.white,)),
+                          icon: const Icon(Icons.add, color: Colors.white,)),
                   ),
               ],
             ),
@@ -117,7 +117,7 @@ class PlayerInputScreen extends StatelessWidget {
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  child: Center(child: Text('Iniciar partida', style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),))),
+                  child: const Center(child: Text('Iniciar partida', style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),))),
             ),
           ],
         ),

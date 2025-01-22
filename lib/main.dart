@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:padel_record/provider/playerProvider.dart';
+import 'package:padel_record/provider/puntosProvider.dart';
 import 'package:padel_record/view/playerInputScreen.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +18,10 @@ class PadelApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context){
           return PlayerProvider();
-        })
+        }),
+        ChangeNotifierProvider(create: (context){
+          return PuntosProvider();
+        }),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
