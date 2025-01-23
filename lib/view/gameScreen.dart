@@ -34,23 +34,64 @@ class _GameScreenState extends State<GameScreen> {
     return Scaffold(
       backgroundColor: Colors.grey.shade300,
       appBar: AppBar(
+        backgroundColor: Colors.grey.shade300,
+        centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new_rounded),
           onPressed: () {
             Navigator.pop(context);
           },),
-        backgroundColor: Colors.grey.shade300,
-        title: const Text('Partida de Padel'),
+        title: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+              height: 40,
+              width: 200,
+              decoration: BoxDecoration(
+                  color: Colors.white38,
+                  borderRadius: BorderRadius.circular(12)
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('sets', style: TextStyle(fontWeight: FontWeight.bold),),
+                  const VerticalDivider(thickness: 1,),
+                  IconButton(onPressed: (){}, icon: const Icon(Icons.remove)),
+                  Center(child: Text('3',
+                    style: TextStyle(color: Colors.grey.shade800, fontSize: 20),)),
+                  IconButton(onPressed: (){}, icon: const Icon(Icons.add)),
+                ],
+              )),
+        ),
         actions: [
           IconButton(
             onPressed: () {
               puntosProvider.refresh();
             },
-            icon: const Icon(Icons.refresh_rounded),)
+            icon: const Icon(Icons.refresh_rounded, size: 30,),)
         ],
       ),
       body: Column(
         children: [
+          MaterialButton(
+            onPressed: (){
+              playerProvider.assignTeams();
+            },
+            child: Container(
+                height: 40,
+                width: 200,
+                decoration: BoxDecoration(
+                    color: Colors.blue.shade400,
+                    borderRadius: BorderRadius.circular(12)
+                ),
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text('Nueva partida', style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w400),),
+                    Icon(Icons.sports_tennis_rounded, color: Colors.white, size: 20,)
+                  ],
+                )),
+          ),
+          const SizedBox(height: 40,),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Row(
@@ -115,7 +156,7 @@ class _GameScreenState extends State<GameScreen> {
               children: [
                 IconButton(onPressed: (){
                   puntosProvider.backScoreA();
-                }, icon: const Icon(Icons.arrow_back_rounded)),
+                }, icon: const Icon(Icons.remove)),
                 Container(
                   height: 50,
                   width: 50,
@@ -146,7 +187,7 @@ class _GameScreenState extends State<GameScreen> {
                   setState(() {
                     puntosProvider.backScoreB();
                   });
-                }, icon: const Icon(Icons.arrow_forward_rounded)),
+                }, icon: const Icon(Icons.remove)),
               ],
             ),
           ),

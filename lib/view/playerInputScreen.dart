@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:padel_record/models/playerModel.dart';
 import 'package:padel_record/provider/playerProvider.dart';
+import 'package:padel_record/provider/puntosProvider.dart';
 import 'package:padel_record/view/gameScreen.dart';
 import 'package:provider/provider.dart';
 
@@ -14,23 +15,27 @@ class PlayerInputScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final playerProvider = Provider.of<PlayerProvider>(context);
+    final puntosProvider = Provider.of<PuntosProvider>(context);
     final TextEditingController nombreController = TextEditingController();
 
     return Scaffold(
       backgroundColor: Colors.grey.shade300,
       appBar: AppBar(
         backgroundColor: Colors.grey.shade300,
-        title: const Text('Ingresar jugadores'),
+        centerTitle: true,
+        title: const Text('PADEL RECORD'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
                   width: 250,
                   child: TextField(
+                    maxLength: 12,
                     controller: nombreController,
                     decoration: const InputDecoration(labelText: 'Nombre del jugador'),
                   ),
@@ -48,6 +53,7 @@ class PlayerInputScreen extends StatelessWidget {
                             if (nombreController.text.isEmpty) {
                               ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
+                                duration: Duration(seconds: 1),
                                 content: Text('Debes agregar un nombre'),
                               ),
                             );
@@ -86,7 +92,7 @@ class PlayerInputScreen extends StatelessWidget {
                             TextButton(
                               onPressed: () {
                               playerProvider.removePlayer(player);
-                            }, child: const Text('-', style: TextStyle(color: Colors.redAccent, fontSize: 40),),)
+                            }, child: const Icon(Icons.remove, color: Colors.redAccent, size: 25,))
                           ],
                         ),
                       ),
@@ -97,6 +103,9 @@ class PlayerInputScreen extends StatelessWidget {
             ),
             MaterialButton(
               onPressed: (){
+
+                puntosProvider.refresh();
+                
                 if (playerProvider.players.length >= 4){
                   playerProvider.assignTeams();
                   Navigator.push(context, MaterialPageRoute(builder: (context){
@@ -105,6 +114,7 @@ class PlayerInputScreen extends StatelessWidget {
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
+                      duration: Duration(seconds: 1),
                       content: Text('Se necesitan al menos 4 jugadores'),
                     ),
                   );
