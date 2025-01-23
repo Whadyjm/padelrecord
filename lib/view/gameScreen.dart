@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:padel_record/models/playerModel.dart';
 import 'package:padel_record/provider/playerProvider.dart';
 import 'package:padel_record/provider/puntosProvider.dart';
+import 'package:padel_record/widgets/addRemoveBtns.dart';
 import 'package:provider/provider.dart';
 
 class GameScreen extends StatefulWidget {
@@ -55,10 +56,14 @@ class _GameScreenState extends State<GameScreen> {
                 children: [
                   const Text('sets', style: TextStyle(fontWeight: FontWeight.bold),),
                   const VerticalDivider(thickness: 1,),
-                  IconButton(onPressed: (){}, icon: const Icon(Icons.remove)),
-                  Center(child: Text('3',
+                  IconButton(onPressed: (){
+                    puntosProvider.removeSet();
+                  }, icon: const Icon(Icons.remove)),
+                  Center(child: Text('${puntosProvider.set}',
                     style: TextStyle(color: Colors.grey.shade800, fontSize: 20),)),
-                  IconButton(onPressed: (){}, icon: const Icon(Icons.add)),
+                  IconButton(onPressed: (){
+                    puntosProvider.addSet();
+                  }, icon: const Icon(Icons.add)),
                 ],
               )),
         ),
@@ -150,47 +155,46 @@ class _GameScreenState extends State<GameScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 20, right: 30, left: 30),
+            padding: const EdgeInsets.only(left: 20, right: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                IconButton(onPressed: (){
-                  puntosProvider.backScoreA();
-                }, icon: const Icon(Icons.remove)),
-                Container(
-                  height: 50,
-                  width: 50,
-                  decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(12)
-                  ),
-                  child: IconButton(
-                      onPressed: (){
-                        puntosProvider.addScoreA();
-                      },
-                      icon: const Icon(Icons.add, color: Colors.white,)),
+                Column(
+                  children: [
+                    Visibility(
+                      visible: puntosProvider.firstSet1 ? true:false,
+                        child: const Text('1er Set', style: TextStyle(fontWeight: FontWeight.w600),)),
+                    const SizedBox(height: 10,),
+                    Visibility(
+                        visible: puntosProvider.secondSet1 ? true:false,
+                        child: const Text('2do Set', style: TextStyle(fontWeight: FontWeight.w600),)),
+                    const SizedBox(height: 10,),
+                    Visibility(
+                        visible: puntosProvider.thirdSet1 ? true:false,
+                        child: const Text('3er Set', style: TextStyle(fontWeight: FontWeight.w600),)),
+                  ],
                 ),
-                Container(
-                  height: 50,
-                  width: 50,
-                  decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(12)
-                  ),
-                  child: IconButton(
-                      onPressed: (){
-                        puntosProvider.addScoreB();
-                      },
-                      icon: const Icon(Icons.add, color: Colors.white,)),
+                Column(
+                  children: [
+                    Visibility(
+                        visible: puntosProvider.firstSet2 ? true:false,
+                        child: const Text('1er Set', style: TextStyle(fontWeight: FontWeight.w600),)),
+                    const SizedBox(height: 10,),
+                    Visibility(
+                        visible: puntosProvider.secondSet2 ? true:false,
+                        child: const Text('2do Set', style: TextStyle(fontWeight: FontWeight.w600),)),
+                    const SizedBox(height: 10,),
+                    Visibility(
+                        visible: puntosProvider.thirdSet2 ? true:false,
+                        child: const Text('3er Set', style: TextStyle(fontWeight: FontWeight.w600),)),
+                  ],
                 ),
-                IconButton(onPressed: (){
-                  setState(() {
-                    puntosProvider.backScoreB();
-                  });
-                }, icon: const Icon(Icons.remove)),
               ],
             ),
           ),
+          const AddRemoveBtns(),
+          const SizedBox(height: 20,),
+          const Divider()
         ],
       ),
     );
