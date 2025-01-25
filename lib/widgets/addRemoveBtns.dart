@@ -1,3 +1,4 @@
+import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:padel_record/provider/playerProvider.dart';
 import 'package:padel_record/provider/puntosProvider.dart';
@@ -31,6 +32,8 @@ class AddRemoveBtns extends StatelessWidget {
                 onPressed: (){
 
                   if (puntosProvider.set == 1 && puntosProvider.count1 == 3){
+
+                    puntosProvider.startConfetti();
                     showDialog(context: context, barrierDismissible: false, builder: (context){
                       return AlertDialog(
                         backgroundColor: Colors.transparent,
@@ -57,7 +60,7 @@ class AddRemoveBtns extends StatelessWidget {
                             onPressed: (){
                               puntosProvider.refresh();
                               playerProvider.assignTeams();
-
+                              puntosProvider.stopConfetti();
                               Navigator.pop(context);
                             },
                             child: Container(
@@ -102,6 +105,8 @@ class AddRemoveBtns extends StatelessWidget {
                 onPressed: (){
                   if (puntosProvider.set == 1 && puntosProvider.count2 == 3){
                     showDialog(context: context, barrierDismissible: false, builder: (context){
+
+                      puntosProvider.startConfetti();
                       return AlertDialog(
                         backgroundColor: Colors.transparent,
                         content: SizedBox(
@@ -127,7 +132,7 @@ class AddRemoveBtns extends StatelessWidget {
                             onPressed: (){
                               puntosProvider.refresh();
                               playerProvider.assignTeams();
-
+                              puntosProvider.stopConfetti();
                               Navigator.pop(context);
                             },
                             child: Container(

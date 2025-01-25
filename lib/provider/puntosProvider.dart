@@ -1,3 +1,4 @@
+import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 
 class PuntosProvider with ChangeNotifier {
@@ -9,12 +10,16 @@ class PuntosProvider with ChangeNotifier {
   int _setsTeamA = 0;
   int _setsTeamB = 0;
 
+
   bool _firstSet1 = false;
   bool _secondSet1 = false;
   bool _thirdSet1 = false;
   bool _firstSet2 = false;
   bool _secondSet2 = false;
   bool _thirdSet2 = false;
+  bool _confetti = false;
+
+  ConfettiController _controller = ConfettiController();
 
   int get scoreA => _scoreA;
   int get scoreB => _scoreB;
@@ -30,6 +35,9 @@ class PuntosProvider with ChangeNotifier {
   bool get firstSet2 => _firstSet2;
   bool get secondSet2 => _secondSet2;
   bool get thirdSet2 => _thirdSet2;
+  bool get confetti => _confetti;
+
+  ConfettiController get controller => _controller;
 
   void addScoreA(){
     if (_count1 == 12) {
@@ -204,5 +212,15 @@ class PuntosProvider with ChangeNotifier {
     } else if (_thirdSet2 == true) {
       _setsTeamB = 3;
     }
+  }
+
+  void startConfetti(){
+    _controller.play();
+    notifyListeners();
+  }
+
+  void stopConfetti(){
+    _controller.stop();
+    notifyListeners();
   }
 }
