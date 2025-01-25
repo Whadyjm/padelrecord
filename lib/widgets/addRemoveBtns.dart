@@ -104,9 +104,9 @@ class AddRemoveBtns extends StatelessWidget {
             child: IconButton(
                 onPressed: (){
                   if (puntosProvider.set == 1 && puntosProvider.count2 == 3){
-                    showDialog(context: context, barrierDismissible: false, builder: (context){
 
-                      puntosProvider.startConfetti();
+                    puntosProvider.startConfetti();
+                    showDialog(context: context, barrierDismissible: false, builder: (context){
                       return AlertDialog(
                         backgroundColor: Colors.transparent,
                         content: SizedBox(
