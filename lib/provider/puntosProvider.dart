@@ -6,6 +6,8 @@ class PuntosProvider with ChangeNotifier {
   int _count1 = 0;
   int _count2 = 0;
   int _set = 1;
+  int _setsTeamA = 0;
+  int _setsTeamB = 0;
 
   bool _firstSet1 = false;
   bool _secondSet1 = false;
@@ -19,6 +21,8 @@ class PuntosProvider with ChangeNotifier {
   int get count1 => _count1;
   int get count2 => _count2;
   int get set => _set;
+  int get setsTeamA => _setsTeamA;
+  int get setsTeamB => _setsTeamB;
 
   bool get firstSet1 => _firstSet1;
   bool get secondSet1 => _secondSet1;
@@ -182,5 +186,23 @@ class PuntosProvider with ChangeNotifier {
       _thirdSet2 = true;
     }
     notifyListeners();
+  }
+
+  void setsByTeam (){
+    if (_firstSet1 == true){
+      _setsTeamA = 1;
+    } else if (_secondSet1 == true) {
+      _setsTeamA = 2;
+    } else if (_thirdSet1 == true) {
+      _setsTeamA = 3;
+    }
+
+    if (_firstSet2 == true){
+      _setsTeamB = 1;
+    } else if (_secondSet2 == true) {
+      _setsTeamB = 2;
+    } else if (_thirdSet2 == true) {
+      _setsTeamB = 3;
+    }
   }
 }

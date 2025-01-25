@@ -79,6 +79,7 @@ class _GameScreenState extends State<GameScreen> {
         children: [
           MaterialButton(
             onPressed: (){
+              puntosProvider.refresh();
               playerProvider.assignTeams();
             },
             child: Container(

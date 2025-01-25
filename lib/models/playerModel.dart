@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-class PlayerModel with ChangeNotifier{
+class PlayerModel{
 
   final String nombre;
   final int puntos;
