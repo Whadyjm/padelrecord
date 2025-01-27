@@ -44,12 +44,12 @@ class AddRemoveBtns extends StatelessWidget {
                             children: [
                               Image.asset(height: 180, 'assets/trophy.png'),
                               const SizedBox(height: 20,),
-                              const Text('¡Equipo A Ganador!', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),),
+                              const Text('¡Equipo A Ganador!', style: TextStyle(fontFamily: 'sf-pro-display', color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Text('${playerProvider.teamA[0]}', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w400, fontSize: 20),),
-                                  Text('${playerProvider.teamA[1]}', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w400, fontSize: 20),),
+                                  Text('${playerProvider.teamA[0]}', style: const TextStyle(fontFamily: 'sf-pro-display', color: Colors.white, fontWeight: FontWeight.w700, fontSize: 20),),
+                                  Text('${playerProvider.teamA[1]}', style: const TextStyle(fontFamily: 'sf-pro-display', color: Colors.white, fontWeight: FontWeight.w700, fontSize: 20),),
                                 ],
                               ),
                             ],
@@ -73,7 +73,7 @@ class AddRemoveBtns extends StatelessWidget {
                                 child: const Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Text('Siguiente partida', style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w400),),
+                                    Text('Siguiente partida', style: TextStyle(fontFamily: 'sf-pro-display', fontSize: 18, color: Colors.white, fontWeight: FontWeight.w700),),
                                     Icon(Icons.arrow_forward_ios_rounded, color: Colors.white, size: 20,)
                                   ],
                                 )),

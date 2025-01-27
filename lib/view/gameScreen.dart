@@ -53,13 +53,13 @@ class _GameScreenState extends State<GameScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('sets', style: TextStyle(fontWeight: FontWeight.bold),),
+                      const Text('sets', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.bold),),
                       const VerticalDivider(thickness: 1,),
                       IconButton(onPressed: (){
                         puntosProvider.removeSet();
                       }, icon: const Icon(Icons.remove)),
                       Center(child: Text('${puntosProvider.set}',
-                        style: TextStyle(color: Colors.grey.shade800, fontSize: 20),)),
+                        style: TextStyle(fontFamily: 'sf-pro-display', color: Colors.grey.shade800, fontSize: 20, fontWeight: FontWeight.w700),)),
                       IconButton(onPressed: (){
                         puntosProvider.addSet();
                       }, icon: const Icon(Icons.add)),
@@ -92,7 +92,7 @@ class _GameScreenState extends State<GameScreen> {
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text('Nueva partida', style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w400),),
+                        Text('Nueva partida', style: TextStyle(fontFamily: 'sf-pro-display', fontSize: 18, color: Colors.white, fontWeight: FontWeight.w700),),
                         Icon(Icons.sports_tennis_rounded, color: Colors.white, size: 20,)
                       ],
                     )),
@@ -113,8 +113,8 @@ class _GameScreenState extends State<GameScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(playerProvider.teamA[0].toString(), style: const TextStyle(fontWeight: FontWeight.bold),),
-                          Text(playerProvider.teamA[1].toString(), style: const TextStyle(fontWeight: FontWeight.bold),),
+                          Text(playerProvider.teamA[0].toString(), style: const TextStyle(fontFamily: 'sf-pro-display', fontSize: 15, color: Colors.black87, fontWeight: FontWeight.bold),),
+                          Text(playerProvider.teamA[1].toString(), style: const TextStyle(fontFamily: 'sf-pro-display', fontSize: 15, color: Colors.black87, fontWeight: FontWeight.bold),),
                         ],
                       ),
                     ),
@@ -126,8 +126,8 @@ class _GameScreenState extends State<GameScreen> {
                           color: Colors.black,
                         ),
                         child: Center(child: Text('${puntosProvider.scoreA}',
-                          style: const TextStyle(color: Colors.white, fontSize: 25),))),
-                    const Text('VS', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                          style: const TextStyle(fontFamily: 'sf-pro-display', color: Colors.white, fontWeight: FontWeight.w700, fontSize: 25),))),
+                    const Text('VS', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w900, fontSize: 20),),
                     Container(
                         height: 50,
                         width: 50,
@@ -136,7 +136,7 @@ class _GameScreenState extends State<GameScreen> {
                           color: Colors.black,
                         ),
                         child: Center(child: Text('${puntosProvider.scoreB}',
-                          style: const TextStyle(color: Colors.white, fontSize: 25),))),
+                          style: const TextStyle(fontFamily: 'sf-pro-display', color: Colors.white, fontWeight: FontWeight.w700, fontSize: 25),))),
                     Container(
                       height: 50,
                       width: 100,
@@ -147,8 +147,8 @@ class _GameScreenState extends State<GameScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(playerProvider.teamB[0].toString(), style: const TextStyle(fontWeight: FontWeight.bold),),
-                          Text(playerProvider.teamB[1].toString(), style: const TextStyle(fontWeight: FontWeight.bold),),
+                          Text(playerProvider.teamB[0].toString(), style: const TextStyle(fontFamily: 'sf-pro-display', fontSize: 15, color: Colors.black87, fontWeight: FontWeight.bold),),
+                          Text(playerProvider.teamB[1].toString(), style: const TextStyle(fontFamily: 'sf-pro-display', fontSize: 15, color: Colors.black87, fontWeight: FontWeight.bold),),
                         ],
                       ),
                     ),
@@ -164,30 +164,30 @@ class _GameScreenState extends State<GameScreen> {
                       children: [
                         Visibility(
                             visible: puntosProvider.firstSet1 ? true:false,
-                            child: const Text('1er Set', style: TextStyle(fontWeight: FontWeight.w600),)),
+                            child: const Text('1er Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600),)),
                         const SizedBox(height: 10,),
                         Visibility(
                             visible: puntosProvider.secondSet1 ? true:false,
-                            child: const Text('2do Set', style: TextStyle(fontWeight: FontWeight.w600),)),
+                            child: const Text('2do Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600),)),
                         const SizedBox(height: 10,),
                         Visibility(
                             visible: puntosProvider.thirdSet1 ? true:false,
-                            child: const Text('3er Set', style: TextStyle(fontWeight: FontWeight.w600),)),
+                            child: const Text('3er Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600),)),
                       ],
                     ),
                     Column(
                       children: [
                         Visibility(
                             visible: puntosProvider.firstSet2 ? true:false,
-                            child: const Text('1er Set', style: TextStyle(fontWeight: FontWeight.w600),)),
+                            child: const Text('1er Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600),)),
                         const SizedBox(height: 10,),
                         Visibility(
                             visible: puntosProvider.secondSet2 ? true:false,
-                            child: const Text('2do Set', style: TextStyle(fontWeight: FontWeight.w600),)),
+                            child: const Text('2do Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600),)),
                         const SizedBox(height: 10,),
                         Visibility(
                             visible: puntosProvider.thirdSet2 ? true:false,
-                            child: const Text('3er Set', style: TextStyle(fontWeight: FontWeight.w600),)),
+                            child: const Text('3er Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600),)),
                       ],
                     ),
                   ],

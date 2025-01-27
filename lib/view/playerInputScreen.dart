@@ -1,7 +1,6 @@
 import 'dart:ui';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:padel_record/models/playerModel.dart';
 import 'package:padel_record/provider/playerProvider.dart';
 import 'package:padel_record/provider/puntosProvider.dart';
 import 'package:padel_record/view/gameScreen.dart';
@@ -23,7 +22,7 @@ class PlayerInputScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.grey.shade300,
         centerTitle: true,
-        title: const Text('PADEL RECORD'),
+        title: Text('PADEL RECORD', style: TextStyle(fontFamily: 'sf-pro-display', color: Colors.blue.shade800, fontSize: 25, fontWeight: FontWeight.w900),),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -71,7 +70,7 @@ class PlayerInputScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  Text('Jugadores:', style: TextStyle(color: Colors.grey.shade700, fontWeight: FontWeight.bold),),
+                  Text('Jugadores:', style: TextStyle(fontFamily: 'sf-pro-display', fontSize: 16, color: Colors.grey.shade800, fontWeight: FontWeight.w700),),
                 ],
               ),
             ),
@@ -88,7 +87,7 @@ class PlayerInputScreen extends StatelessWidget {
                         title: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(player.nombre, style: const TextStyle(fontWeight: FontWeight.w700),),
+                            Text(player.nombre, style: TextStyle(fontFamily:'sf-pro-display', fontWeight: FontWeight.w700, color: Colors.grey.shade700),),
                             TextButton(
                               onPressed: () {
                               playerProvider.removePlayer(player);
@@ -127,7 +126,7 @@ class PlayerInputScreen extends StatelessWidget {
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(12)
                   ),
-                  child: const Center(child: Text('Iniciar partida', style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),))),
+                  child: const Center(child: Text('Iniciar partida', style: TextStyle(fontFamily: 'sf-pro-display', fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),))),
             ),
           ],
         ),
