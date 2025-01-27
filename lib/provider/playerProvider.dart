@@ -20,6 +20,16 @@ class PlayerProvider with ChangeNotifier{
       notifyListeners();
   }
 
+  void addTeamA(String nombre){
+    _teamA.add(nombre);
+    notifyListeners();
+  }
+
+  void addTeamB(String nombre){
+    _teamB.add(nombre);
+    notifyListeners();
+  }
+
   void assignTeams(){
     final random = Random();
     final shuffledPlayers = List.from(_players)..shuffle(random);
