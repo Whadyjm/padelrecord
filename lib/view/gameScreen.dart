@@ -17,9 +17,6 @@ class GameScreen extends StatefulWidget {
 
 class _GameScreenState extends State<GameScreen> {
 
-  int count1 = 0;
-  int count2 = 0;
-
   @override
   void initState() {
     super.initState();

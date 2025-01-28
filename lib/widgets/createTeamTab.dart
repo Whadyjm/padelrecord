@@ -76,6 +76,13 @@ class CreateTeamTab extends StatelessWidget {
                                   content: Text('Debes agregar un nombre'),
                                 ),
                               );
+                            } else if (nombreControllerA.text.length > 6){
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  duration: Duration(seconds: 1),
+                                  content: Text('El nombre no debe superar los 6 caracteres'),
+                                ),
+                              );
                             } else if (playerProvider.playersTeamA.length < 2){
                               playerProvider.addPlayersTeamA(nombreControllerA.text);
                               nombreControllerA.clear();
@@ -113,7 +120,7 @@ class CreateTeamTab extends StatelessWidget {
                         title: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(players.nombre, style: TextStyle(fontFamily:'sf-pro-display', fontWeight: FontWeight.w700, color: Colors.grey.shade700),),
+                            Text(players.nombre, style: TextStyle(fontFamily:'sf-pro-display', fontWeight: FontWeight.w700, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700,),),
                             TextButton(
                                 onPressed: () {
                                   playerProvider.removePlayersTeamA(players);
@@ -180,6 +187,13 @@ class CreateTeamTab extends StatelessWidget {
                                   content: Text('Debes agregar un nombre'),
                                 ),
                               );
+                            } else if (nombreControllerB.text.length > 6){
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  duration: Duration(seconds: 1),
+                                  content: Text('El nombre no debe superar los 6 caracteres'),
+                                ),
+                              );
                             } else if (playerProvider.playersTeamB.length < 2){
                               playerProvider.addPlayersTeamB(nombreControllerB.text);
                               nombreControllerB.clear();
@@ -217,7 +231,7 @@ class CreateTeamTab extends StatelessWidget {
                         title: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(players.nombre, style: TextStyle(fontFamily:'sf-pro-display', fontWeight: FontWeight.w700, color: Colors.grey.shade700),),
+                            Text(players.nombre, style: TextStyle(fontFamily:'sf-pro-display', fontWeight: FontWeight.w700, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700,),),
                             TextButton(
                                 onPressed: () {
                                   playerProvider.removePlayersTeamB(players);

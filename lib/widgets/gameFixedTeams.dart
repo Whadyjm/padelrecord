@@ -1,9 +1,8 @@
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
+import 'package:padel_record/provider/btnProvider.dart';
 import 'package:padel_record/widgets/addRemoveBtns.dart';
 import 'package:provider/provider.dart';
-
-import '../provider/btnProvider.dart';
 import '../provider/playerProvider.dart';
 import '../provider/puntosProvider.dart';
 
@@ -15,17 +14,18 @@ class GameFixedTeams extends StatelessWidget {
 
     final playerProvider = Provider.of<PlayerProvider>(context);
     final puntosProvider = Provider.of<PuntosProvider>(context);
+    final btnProvider = Provider.of<BtnProvider>(context);
 
     return Stack(
         alignment: Alignment.topCenter,
         children: [
           Scaffold(
-            backgroundColor: Colors.grey.shade300,
+            backgroundColor: btnProvider.darkMode ? Colors.grey.shade900:Colors.grey.shade300,
             appBar: AppBar(
-              backgroundColor: Colors.grey.shade300,
+              backgroundColor: btnProvider.darkMode ? Colors.grey.shade900:Colors.grey.shade300,
               centerTitle: true,
               leading: IconButton(
-                icon: const Icon(Icons.arrow_back_ios_new_rounded),
+                icon: Icon(Icons.arrow_back_ios_new_rounded, color: btnProvider.darkMode ? Colors.white:Colors.grey.shade800,),
                 onPressed: () {
                   Navigator.pop(context);
                 },),
@@ -60,7 +60,7 @@ class GameFixedTeams extends StatelessWidget {
                     puntosProvider.refresh();
                     puntosProvider.stopConfetti();
                   },
-                  icon: const Icon(Icons.refresh_rounded, size: 30,),)
+                  icon: Icon(Icons.refresh_rounded, size: 30, color: btnProvider.darkMode ? Colors.white:Colors.grey.shade800,),)
               ],
             ),
             body: Column(
@@ -98,11 +98,25 @@ class GameFixedTeams extends StatelessWidget {
                           borderRadius: BorderRadius.circular(8),
                           color: Colors.white.withOpacity(0.3),
                         ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                        child: Row(
                           children: [
-                            Text(playerProvider.playersTeamA[0].toString(), style: const TextStyle(fontFamily: 'sf-pro-display', fontSize: 15, color: Colors.black87, fontWeight: FontWeight.bold),),
-                            Text(playerProvider.playersTeamA[1].toString(), style: const TextStyle(fontFamily: 'sf-pro-display', fontSize: 15, color: Colors.black87, fontWeight: FontWeight.bold),),
+                            Container(
+                              height: 50,
+                              width: 40,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                color: Colors.white.withOpacity(0.3),
+                              ),
+                              child: const Center(child: Text('A', style: TextStyle(fontFamily: 'sf-pro-display', fontSize: 20, color: Colors.black87, fontWeight: FontWeight.bold))),
+                            ),
+                            const SizedBox(width: 5,),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(playerProvider.playersTeamA[0].toString(), style: const TextStyle(fontFamily: 'sf-pro-display', fontSize: 15, color: Colors.black87, fontWeight: FontWeight.bold),),
+                                Text(playerProvider.playersTeamA[1].toString(), style: const TextStyle(fontFamily: 'sf-pro-display', fontSize: 15, color: Colors.black87, fontWeight: FontWeight.bold),),
+                              ],
+                            ),
                           ],
                         ),
                       ),
@@ -115,7 +129,7 @@ class GameFixedTeams extends StatelessWidget {
                           ),
                           child: Center(child: Text('${puntosProvider.scoreA}',
                             style: const TextStyle(fontFamily: 'sf-pro-display', color: Colors.white, fontWeight: FontWeight.w700, fontSize: 25),))),
-                      const Text('VS', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w900, fontSize: 20),),
+                      Text('VS', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w900, fontSize: 20, color: btnProvider.darkMode ? Colors.white:Colors.grey.shade300,),),
                       Container(
                           height: 50,
                           width: 50,
@@ -129,14 +143,29 @@ class GameFixedTeams extends StatelessWidget {
                         height: 50,
                         width: 100,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(8),
                           color: Colors.white.withOpacity(0.3),
                         ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(playerProvider.playersTeamB[0].toString(), style: const TextStyle(fontFamily: 'sf-pro-display', fontSize: 15, color: Colors.black87, fontWeight: FontWeight.bold),),
-                            Text(playerProvider.playersTeamB[1].toString(), style: const TextStyle(fontFamily: 'sf-pro-display', fontSize: 15, color: Colors.black87, fontWeight: FontWeight.bold),),
+                            const SizedBox(width: 5,),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(playerProvider.playersTeamB[0].toString(), style: const TextStyle(fontFamily: 'sf-pro-display', fontSize: 15, color: Colors.black87, fontWeight: FontWeight.bold),),
+                                Text(playerProvider.playersTeamB[1].toString(), style: const TextStyle(fontFamily: 'sf-pro-display', fontSize: 15, color: Colors.black87, fontWeight: FontWeight.bold),),
+                              ],
+                            ),
+                            Container(
+                              height: 50,
+                              width: 40,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                color: Colors.white.withOpacity(0.3),
+                              ),
+                              child: const Center(child: Text('B', style: TextStyle(fontFamily: 'sf-pro-display', fontSize: 20, color: Colors.black87, fontWeight: FontWeight.bold))),
+                            ),
                           ],
                         ),
                       ),

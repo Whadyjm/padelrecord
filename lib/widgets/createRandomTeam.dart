@@ -60,6 +60,13 @@ class CreateRandomTeam extends StatelessWidget {
                             content: Text('Debes agregar un nombre'),
                           ),
                         );
+                      } else if (nombreController.text.length > 6){
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            duration: Duration(seconds: 1),
+                            content: Text('El nombre no debe superar los 6 caracteres'),
+                          ),
+                        );
                       } else {
                         playerProvider.addPlayer(nombreController.text);
                         nombreController.clear();
@@ -73,8 +80,10 @@ class CreateRandomTeam extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Jugadores:', style: TextStyle(fontFamily: 'sf-pro-display', fontSize: 16, color: Colors.grey.shade800, fontWeight: FontWeight.w700),),
+                Text('Jugadores:', style: TextStyle(fontFamily: 'sf-pro-display', fontSize: 16, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700, fontWeight: FontWeight.w700),),
+                Text('${playerProvider.players.isEmpty ? '-':playerProvider.players.length}', style: TextStyle(fontFamily: 'sf-pro-display', fontSize: 16, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700, fontWeight: FontWeight.w700),),
               ],
             ),
           ),
@@ -91,7 +100,7 @@ class CreateRandomTeam extends StatelessWidget {
                       title: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(player.nombre, style: TextStyle(fontFamily:'sf-pro-display', fontWeight: FontWeight.w700, color: Colors.grey.shade700),),
+                          Text(player.nombre, style: TextStyle(fontFamily:'sf-pro-display', fontWeight: FontWeight.w700, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700,),),
                           TextButton(
                               onPressed: () {
                                 playerProvider.removePlayer(player);
