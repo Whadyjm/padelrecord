@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:padel_record/provider/winnerProvider.dart';
 import 'package:provider/provider.dart';
 import '../provider/btnProvider.dart';
 import '../provider/playerProvider.dart';
@@ -11,9 +12,11 @@ class WinnerDialogs {
     final puntosProvider = Provider.of<PuntosProvider>(context, listen: false);
     final playerProvider = Provider.of<PlayerProvider>(context, listen: false);
     final btnProvider = Provider.of<BtnProvider>(context, listen: false);
+    final winnerProvider = Provider.of<WinnerProvider>(context, listen: false);
 
     if (puntosProvider.set == 1 && puntosProvider.count1 == 3){
 
+      winnerProvider.addWinner(playerProvider.playersTeamA[0], playerProvider.playersTeamA[1], puntosProvider.set);
       puntosProvider.startConfetti();
       showDialog(context: context, barrierDismissible: false, builder: (context){
         return AlertDialog(
@@ -62,6 +65,8 @@ class WinnerDialogs {
         );
       });
     } else if (puntosProvider.set == 2 && puntosProvider.count1 == 7){
+
+      winnerProvider.addWinner(playerProvider.playersTeamA[0], playerProvider.playersTeamA[1], puntosProvider.set);
       puntosProvider.startConfetti();
       showDialog(context: context, barrierDismissible: false, builder: (context){
         return AlertDialog(
@@ -111,6 +116,7 @@ class WinnerDialogs {
       });
     } else if (puntosProvider.set == 3 && puntosProvider.count1 == 11){
 
+      winnerProvider.addWinner(playerProvider.playersTeamA[0], playerProvider.playersTeamA[1], puntosProvider.set);
       puntosProvider.startConfetti();
       showDialog(context: context, barrierDismissible: false, builder: (context){
         return AlertDialog(
@@ -171,9 +177,11 @@ class WinnerDialogs {
     final puntosProvider = Provider.of<PuntosProvider>(context, listen: false);
     final playerProvider = Provider.of<PlayerProvider>(context, listen: false);
     final btnProvider = Provider.of<BtnProvider>(context, listen: false);
+    final winnerProvider = Provider.of<WinnerProvider>(context, listen: false);
 
     if (puntosProvider.set == 1 && puntosProvider.count2 == 3){
 
+      winnerProvider.addWinner(playerProvider.playersTeamB[0], playerProvider.playersTeamB[1], puntosProvider.set);
       puntosProvider.startConfetti();
       showDialog(context: context, barrierDismissible: false, builder: (context){
         return AlertDialog(
@@ -223,6 +231,7 @@ class WinnerDialogs {
       });
     } else if (puntosProvider.set == 2 && puntosProvider.count2 == 7){
 
+      winnerProvider.addWinner(playerProvider.playersTeamB[0], playerProvider.playersTeamB[1], puntosProvider.set);
       puntosProvider.startConfetti();
       showDialog(context: context, barrierDismissible: false, builder: (context){
         return AlertDialog(
@@ -271,6 +280,8 @@ class WinnerDialogs {
         );
       });
     } else if (puntosProvider.set == 3 && puntosProvider.count2 == 11){
+
+      winnerProvider.addWinner(playerProvider.playersTeamB[0], playerProvider.playersTeamB[1], puntosProvider.set);
       puntosProvider.startConfetti();
       showDialog(context: context, barrierDismissible: false, builder: (context){
         return AlertDialog(
@@ -331,9 +342,11 @@ class WinnerDialogs {
     final puntosProvider = Provider.of<PuntosProvider>(context, listen: false);
     final playerProvider = Provider.of<PlayerProvider>(context, listen: false);
     final btnProvider = Provider.of<BtnProvider>(context, listen: false);
+    final winnerProvider = Provider.of<WinnerProvider>(context, listen: false);
 
     if (puntosProvider.set == 1 && puntosProvider.count1 == 3){
 
+      winnerProvider.addWinner(playerProvider.teamA[0], playerProvider.teamA[1], puntosProvider.set);
       puntosProvider.startConfetti();
       showDialog(context: context, barrierDismissible: false, builder: (context){
         return AlertDialog(
@@ -384,6 +397,7 @@ class WinnerDialogs {
       });
     } else if (puntosProvider.set == 2 && puntosProvider.count1 == 7){
 
+      winnerProvider.addWinner(playerProvider.teamA[0], playerProvider.teamA[1], puntosProvider.set);
       puntosProvider.startConfetti();
       showDialog(context: context, barrierDismissible: false, builder: (context){
         return AlertDialog(
@@ -434,6 +448,7 @@ class WinnerDialogs {
       });
     } else if (puntosProvider.set == 2 && puntosProvider.count1 == 11){
 
+      winnerProvider.addWinner(playerProvider.teamA[0], playerProvider.teamA[1], puntosProvider.set);
       puntosProvider.startConfetti();
       showDialog(context: context, barrierDismissible: false, builder: (context){
         return AlertDialog(
@@ -495,9 +510,11 @@ class WinnerDialogs {
     final puntosProvider = Provider.of<PuntosProvider>(context, listen: false);
     final playerProvider = Provider.of<PlayerProvider>(context, listen: false);
     final btnProvider = Provider.of<BtnProvider>(context, listen: false);
+    final winnerProvider = Provider.of<WinnerProvider>(context, listen: false);
 
     if (puntosProvider.set == 1 && puntosProvider.count2 == 3){
 
+      winnerProvider.addWinner(playerProvider.teamB[0], playerProvider.teamB[1], puntosProvider.set);
       puntosProvider.startConfetti();
       showDialog(context: context, barrierDismissible: false, builder: (context){
         return AlertDialog(
@@ -548,6 +565,7 @@ class WinnerDialogs {
       });
     } else if (puntosProvider.set == 2 && puntosProvider.count2 == 7){
 
+      winnerProvider.addWinner(playerProvider.teamB[0], playerProvider.teamB[1], puntosProvider.set);
       puntosProvider.startConfetti();
       showDialog(context: context, barrierDismissible: false, builder: (context){
         return AlertDialog(
@@ -598,6 +616,7 @@ class WinnerDialogs {
       });
     } else if (puntosProvider.set == 3 && puntosProvider.count2 == 11){
 
+      winnerProvider.addWinner(playerProvider.teamB[0], playerProvider.teamB[1], puntosProvider.set);
       puntosProvider.startConfetti();
       showDialog(context: context, barrierDismissible: false, builder: (context){
         return AlertDialog(

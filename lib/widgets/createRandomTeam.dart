@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:padel_record/provider/playerProvider.dart';
+import 'package:padel_record/provider/winnerProvider.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/btnProvider.dart';
@@ -15,6 +16,8 @@ class CreateRandomTeam extends StatelessWidget {
     final playerProvider = Provider.of<PlayerProvider>(context);
     final puntosProvider = Provider.of<PuntosProvider>(context);
     final btnProvider = Provider.of<BtnProvider>(context);
+    final winnerProvider = Provider.of<WinnerProvider>(context);
+
     final TextEditingController nombreController = TextEditingController();
 
     return Padding(
@@ -117,6 +120,7 @@ class CreateRandomTeam extends StatelessWidget {
             onPressed: (){
 
               puntosProvider.refresh();
+              winnerProvider.clearWinner();
 
               if (playerProvider.players.length >= 4){
                 btnProvider.fixedTeamsGameFalse();

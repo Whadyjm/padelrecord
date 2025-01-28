@@ -5,6 +5,8 @@ import 'package:padel_record/provider/puntosProvider.dart';
 import 'package:padel_record/view/gameScreen.dart';
 import 'package:provider/provider.dart';
 
+import '../provider/winnerProvider.dart';
+
 class CreateTeamTab extends StatelessWidget {
   const CreateTeamTab({super.key});
 
@@ -14,6 +16,8 @@ class CreateTeamTab extends StatelessWidget {
     final playerProvider = Provider.of<PlayerProvider>(context);
     final puntosProvider = Provider.of<PuntosProvider>(context);
     final btnProvider = Provider.of<BtnProvider>(context);
+    final winnerProvider = Provider.of<WinnerProvider>(context);
+
     final TextEditingController nombreControllerA = TextEditingController();
     final TextEditingController nombreControllerB = TextEditingController();
 
@@ -249,6 +253,7 @@ class CreateTeamTab extends StatelessWidget {
               onPressed: (){
 
                 puntosProvider.refresh();
+                winnerProvider.clearWinner();
 
                 if (playerProvider.playersTeamA.length + playerProvider.playersTeamB.length == 4){
                   btnProvider.fixedTeamsGameTrue();

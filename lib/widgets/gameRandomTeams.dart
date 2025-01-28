@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../provider/btnProvider.dart';
 import '../provider/playerProvider.dart';
 import '../provider/puntosProvider.dart';
+import '../provider/winnerProvider.dart';
 import 'addRemoveBtns.dart';
 
 class GameRandomTeams extends StatelessWidget {
@@ -16,6 +17,7 @@ class GameRandomTeams extends StatelessWidget {
     final playerProvider = Provider.of<PlayerProvider>(context);
     final puntosProvider = Provider.of<PuntosProvider>(context);
     final btnProvider = Provider.of<BtnProvider>(context);
+    final winnerProvider = Provider.of<WinnerProvider>(context);
 
     return Stack(
         alignment: Alignment.topCenter,
@@ -48,7 +50,7 @@ class GameRandomTeams extends StatelessWidget {
                           puntosProvider.removeSet();
                         }, icon: const Icon(Icons.remove)),
                         Center(child: Text('${puntosProvider.set}',
-                          style: TextStyle(fontFamily: 'sf-pro-display', color: Colors.grey.shade800, fontSize: 20, fontWeight: FontWeight.w700),)),
+                          style: TextStyle(fontFamily: 'sf-pro-display', color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700, fontSize: 20, fontWeight: FontWeight.w700),)),
                         IconButton(onPressed: (){
                           puntosProvider.addSet();
                         }, icon: const Icon(Icons.add)),
@@ -182,30 +184,30 @@ class GameRandomTeams extends StatelessWidget {
                         children: [
                           Visibility(
                               visible: puntosProvider.firstSet1 ? true:false,
-                              child: const Text('1er Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600),)),
+                              child: Text('1er Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700),)),
                           const SizedBox(height: 10,),
                           Visibility(
                               visible: puntosProvider.secondSet1 ? true:false,
-                              child: const Text('2do Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600),)),
+                              child: Text('2do Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700),)),
                           const SizedBox(height: 10,),
                           Visibility(
                               visible: puntosProvider.thirdSet1 ? true:false,
-                              child: const Text('3er Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600),)),
+                              child: Text('3er Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700),)),
                         ],
                       ),
                       Column(
                         children: [
                           Visibility(
                               visible: puntosProvider.firstSet2 ? true:false,
-                              child: const Text('1er Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600),)),
+                              child: Text('1er Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700),)),
                           const SizedBox(height: 10,),
                           Visibility(
                               visible: puntosProvider.secondSet2 ? true:false,
-                              child: const Text('2do Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600),)),
+                              child: Text('2do Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700),)),
                           const SizedBox(height: 10,),
                           Visibility(
                               visible: puntosProvider.thirdSet2 ? true:false,
-                              child: const Text('3er Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600),)),
+                              child: Text('3er Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700),)),
                         ],
                       ),
                     ],
@@ -213,7 +215,40 @@ class GameRandomTeams extends StatelessWidget {
                 ),
                 const AddRemoveBtns(),
                 const SizedBox(height: 20,),
-                const Divider()
+                const Divider(),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, bottom: 8, top: 8),
+                  child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Partidas jugadas: ${winnerProvider.winner.length}', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w700, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700))),
+                ),
+                Expanded(
+                    child: ListView.builder(
+                        itemCount: winnerProvider.winner.length,
+                        itemBuilder: (context, index){
+
+                          final winner = winnerProvider.winner[index];
+
+                          return ListTile(
+                            leading: Container(
+                                height: 40,
+                                width: 40,
+                                decoration: BoxDecoration(
+                                    color: Colors.grey.shade700,
+                                    borderRadius: BorderRadius.circular(12)
+                                ),
+                                child: const Icon(Icons.grade_rounded, color: Colors.amber, size: 30,)),
+                            title: Row(
+                              children: [
+                                Text('Equipo: ', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w500, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700)),
+                                Text('${winner.player1.toUpperCase()} - ${winner.player2.toUpperCase()}', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w700, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700)),
+                              ],
+                            ),
+                            subtitle: Text('Sets: ${winner.sets}', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600,  color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700)),
+                          );
+                        }
+                    )
+                )
               ],
             ),
           ),
