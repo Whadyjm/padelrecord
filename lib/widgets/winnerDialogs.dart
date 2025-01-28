@@ -61,10 +61,103 @@ class WinnerDialogs {
           ],
         );
       });
-    } else if (puntosProvider.set == 2 && puntosProvider.count1 == 8){
-      return;
-    } else if (puntosProvider.set == 2 && puntosProvider.count1 == 12){
-      return;
+    } else if (puntosProvider.set == 2 && puntosProvider.count1 == 7){
+      puntosProvider.startConfetti();
+      showDialog(context: context, barrierDismissible: false, builder: (context){
+        return AlertDialog(
+          backgroundColor: Colors.transparent,
+          content: SizedBox(
+            height: 280,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(height: 180, 'assets/trophy.png'),
+                const SizedBox(height: 20,),
+                const Text('¡Equipo A Ganador!', style: TextStyle(fontFamily: 'sf-pro-display', color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text('${playerProvider.playersTeamA[0]}', style: const TextStyle(fontFamily: 'sf-pro-display', color: Colors.white, fontWeight: FontWeight.w700, fontSize: 20),),
+                    Text('${playerProvider.playersTeamA[1]}', style: const TextStyle(fontFamily: 'sf-pro-display', color: Colors.white, fontWeight: FontWeight.w700, fontSize: 20),),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            MaterialButton(
+              onPressed: (){
+                puntosProvider.refresh();
+                puntosProvider.stopConfetti();
+                Navigator.pop(context);
+              },
+              child: Container(
+                  height: 40,
+                  width: 200,
+                  decoration: BoxDecoration(
+                      color: Colors.blue.shade400,
+                      borderRadius: BorderRadius.circular(12)
+                  ),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text('Siguiente partida', style: TextStyle(fontFamily: 'sf-pro-display', fontSize: 18, color: Colors.white, fontWeight: FontWeight.w700),),
+                      Icon(Icons.arrow_forward_ios_rounded, color: Colors.white, size: 20,)
+                    ],
+                  )),
+            ),
+          ],
+        );
+      });
+    } else if (puntosProvider.set == 3 && puntosProvider.count1 == 11){
+
+      puntosProvider.startConfetti();
+      showDialog(context: context, barrierDismissible: false, builder: (context){
+        return AlertDialog(
+          backgroundColor: Colors.transparent,
+          content: SizedBox(
+            height: 280,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(height: 180, 'assets/trophy.png'),
+                const SizedBox(height: 20,),
+                const Text('¡Equipo A Ganador!', style: TextStyle(fontFamily: 'sf-pro-display', color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text('${playerProvider.playersTeamA[0]}', style: const TextStyle(fontFamily: 'sf-pro-display', color: Colors.white, fontWeight: FontWeight.w700, fontSize: 20),),
+                    Text('${playerProvider.playersTeamA[1]}', style: const TextStyle(fontFamily: 'sf-pro-display', color: Colors.white, fontWeight: FontWeight.w700, fontSize: 20),),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            MaterialButton(
+              onPressed: (){
+                puntosProvider.refresh();
+                puntosProvider.stopConfetti();
+                Navigator.pop(context);
+              },
+              child: Container(
+                  height: 40,
+                  width: 200,
+                  decoration: BoxDecoration(
+                      color: Colors.blue.shade400,
+                      borderRadius: BorderRadius.circular(12)
+                  ),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text('Siguiente partida', style: TextStyle(fontFamily: 'sf-pro-display', fontSize: 18, color: Colors.white, fontWeight: FontWeight.w700),),
+                      Icon(Icons.arrow_forward_ios_rounded, color: Colors.white, size: 20,)
+                    ],
+                  )),
+            ),
+          ],
+        );
+      });
     }
 
     print(puntosProvider.count1);
@@ -80,6 +173,7 @@ class WinnerDialogs {
     final btnProvider = Provider.of<BtnProvider>(context, listen: false);
 
     if (puntosProvider.set == 1 && puntosProvider.count2 == 3){
+
       puntosProvider.startConfetti();
       showDialog(context: context, barrierDismissible: false, builder: (context){
         return AlertDialog(
@@ -127,10 +221,103 @@ class WinnerDialogs {
           ],
         );
       });
-    } else if (puntosProvider.set == 2 && puntosProvider.count2 == 8){
-      return;
-    } else if (puntosProvider.set == 2 && puntosProvider.count2 == 12){
-      return;
+    } else if (puntosProvider.set == 2 && puntosProvider.count2 == 7){
+
+      puntosProvider.startConfetti();
+      showDialog(context: context, barrierDismissible: false, builder: (context){
+        return AlertDialog(
+          backgroundColor: Colors.transparent,
+          content: SizedBox(
+            height: 280,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(height: 180, 'assets/trophy.png'),
+                const SizedBox(height: 20,),
+                const Text('¡Equipo B Ganador!', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text('${playerProvider.playersTeamB[0]}', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w400, fontSize: 20),),
+                    Text('${playerProvider.playersTeamB[1]}', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w400, fontSize: 20),),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            MaterialButton(
+              onPressed: (){
+                puntosProvider.refresh();
+                puntosProvider.stopConfetti();
+                Navigator.pop(context);
+              },
+              child: Container(
+                  height: 40,
+                  width: 200,
+                  decoration: BoxDecoration(
+                      color: Colors.blue.shade400,
+                      borderRadius: BorderRadius.circular(12)
+                  ),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text('Siguiente partida', style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w400),),
+                      Icon(Icons.arrow_forward_ios_rounded, color: Colors.white, size: 20,)
+                    ],
+                  )),
+            ),
+          ],
+        );
+      });
+    } else if (puntosProvider.set == 3 && puntosProvider.count2 == 11){
+      puntosProvider.startConfetti();
+      showDialog(context: context, barrierDismissible: false, builder: (context){
+        return AlertDialog(
+          backgroundColor: Colors.transparent,
+          content: SizedBox(
+            height: 280,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(height: 180, 'assets/trophy.png'),
+                const SizedBox(height: 20,),
+                const Text('¡Equipo B Ganador!', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text('${playerProvider.playersTeamB[0]}', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w400, fontSize: 20),),
+                    Text('${playerProvider.playersTeamB[1]}', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w400, fontSize: 20),),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            MaterialButton(
+              onPressed: (){
+                puntosProvider.refresh();
+                puntosProvider.stopConfetti();
+                Navigator.pop(context);
+              },
+              child: Container(
+                  height: 40,
+                  width: 200,
+                  decoration: BoxDecoration(
+                      color: Colors.blue.shade400,
+                      borderRadius: BorderRadius.circular(12)
+                  ),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text('Siguiente partida', style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w400),),
+                      Icon(Icons.arrow_forward_ios_rounded, color: Colors.white, size: 20,)
+                    ],
+                  )),
+            ),
+          ],
+        );
+      });
     }
 
     print(puntosProvider.count2);
@@ -195,10 +382,106 @@ class WinnerDialogs {
           ],
         );
       });
-    } else if (puntosProvider.set == 2 && puntosProvider.count1 == 8){
-      return;
-    } else if (puntosProvider.set == 2 && puntosProvider.count1 == 12){
-      return;
+    } else if (puntosProvider.set == 2 && puntosProvider.count1 == 7){
+
+      puntosProvider.startConfetti();
+      showDialog(context: context, barrierDismissible: false, builder: (context){
+        return AlertDialog(
+          backgroundColor: Colors.transparent,
+          content: SizedBox(
+            height: 280,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(height: 180, 'assets/trophy.png'),
+                const SizedBox(height: 20,),
+                const Text('¡Equipo A Ganador!', style: TextStyle(fontFamily: 'sf-pro-display', color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text('${playerProvider.teamA[0]}', style: const TextStyle(fontFamily: 'sf-pro-display', color: Colors.white, fontWeight: FontWeight.w700, fontSize: 20),),
+                    Text('${playerProvider.teamA[1]}', style: const TextStyle(fontFamily: 'sf-pro-display', color: Colors.white, fontWeight: FontWeight.w700, fontSize: 20),),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            MaterialButton(
+              onPressed: (){
+                puntosProvider.refresh();
+                playerProvider.assignTeams();
+                puntosProvider.stopConfetti();
+                Navigator.pop(context);
+              },
+              child: Container(
+                  height: 40,
+                  width: 200,
+                  decoration: BoxDecoration(
+                      color: Colors.blue.shade400,
+                      borderRadius: BorderRadius.circular(12)
+                  ),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text('Siguiente partida', style: TextStyle(fontFamily: 'sf-pro-display', fontSize: 18, color: Colors.white, fontWeight: FontWeight.w700),),
+                      Icon(Icons.arrow_forward_ios_rounded, color: Colors.white, size: 20,)
+                    ],
+                  )),
+            ),
+          ],
+        );
+      });
+    } else if (puntosProvider.set == 2 && puntosProvider.count1 == 11){
+
+      puntosProvider.startConfetti();
+      showDialog(context: context, barrierDismissible: false, builder: (context){
+        return AlertDialog(
+          backgroundColor: Colors.transparent,
+          content: SizedBox(
+            height: 280,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(height: 180, 'assets/trophy.png'),
+                const SizedBox(height: 20,),
+                const Text('¡Equipo A Ganador!', style: TextStyle(fontFamily: 'sf-pro-display', color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text('${playerProvider.teamA[0]}', style: const TextStyle(fontFamily: 'sf-pro-display', color: Colors.white, fontWeight: FontWeight.w700, fontSize: 20),),
+                    Text('${playerProvider.teamA[1]}', style: const TextStyle(fontFamily: 'sf-pro-display', color: Colors.white, fontWeight: FontWeight.w700, fontSize: 20),),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            MaterialButton(
+              onPressed: (){
+                puntosProvider.refresh();
+                playerProvider.assignTeams();
+                puntosProvider.stopConfetti();
+                Navigator.pop(context);
+              },
+              child: Container(
+                  height: 40,
+                  width: 200,
+                  decoration: BoxDecoration(
+                      color: Colors.blue.shade400,
+                      borderRadius: BorderRadius.circular(12)
+                  ),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text('Siguiente partida', style: TextStyle(fontFamily: 'sf-pro-display', fontSize: 18, color: Colors.white, fontWeight: FontWeight.w700),),
+                      Icon(Icons.arrow_forward_ios_rounded, color: Colors.white, size: 20,)
+                    ],
+                  )),
+            ),
+          ],
+        );
+      });
     }
 
     print(puntosProvider.count1);
@@ -263,10 +546,106 @@ class WinnerDialogs {
           ],
         );
       });
-    } else if (puntosProvider.set == 2 && puntosProvider.count2 == 8){
-      return;
-    } else if (puntosProvider.set == 2 && puntosProvider.count2 == 12){
-      return;
+    } else if (puntosProvider.set == 2 && puntosProvider.count2 == 7){
+
+      puntosProvider.startConfetti();
+      showDialog(context: context, barrierDismissible: false, builder: (context){
+        return AlertDialog(
+          backgroundColor: Colors.transparent,
+          content: SizedBox(
+            height: 280,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(height: 180, 'assets/trophy.png'),
+                const SizedBox(height: 20,),
+                const Text('¡Equipo B Ganador!', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text('${playerProvider.teamB[0]}', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w400, fontSize: 20),),
+                    Text('${playerProvider.teamB[1]}', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w400, fontSize: 20),),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            MaterialButton(
+              onPressed: (){
+                puntosProvider.refresh();
+                playerProvider.assignTeams();
+                puntosProvider.stopConfetti();
+                Navigator.pop(context);
+              },
+              child: Container(
+                  height: 40,
+                  width: 200,
+                  decoration: BoxDecoration(
+                      color: Colors.blue.shade400,
+                      borderRadius: BorderRadius.circular(12)
+                  ),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text('Siguiente partida', style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w400),),
+                      Icon(Icons.arrow_forward_ios_rounded, color: Colors.white, size: 20,)
+                    ],
+                  )),
+            ),
+          ],
+        );
+      });
+    } else if (puntosProvider.set == 3 && puntosProvider.count2 == 11){
+
+      puntosProvider.startConfetti();
+      showDialog(context: context, barrierDismissible: false, builder: (context){
+        return AlertDialog(
+          backgroundColor: Colors.transparent,
+          content: SizedBox(
+            height: 280,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(height: 180, 'assets/trophy.png'),
+                const SizedBox(height: 20,),
+                const Text('¡Equipo B Ganador!', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text('${playerProvider.teamB[0]}', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w400, fontSize: 20),),
+                    Text('${playerProvider.teamB[1]}', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w400, fontSize: 20),),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            MaterialButton(
+              onPressed: (){
+                puntosProvider.refresh();
+                playerProvider.assignTeams();
+                puntosProvider.stopConfetti();
+                Navigator.pop(context);
+              },
+              child: Container(
+                  height: 40,
+                  width: 200,
+                  decoration: BoxDecoration(
+                      color: Colors.blue.shade400,
+                      borderRadius: BorderRadius.circular(12)
+                  ),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text('Siguiente partida', style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w400),),
+                      Icon(Icons.arrow_forward_ios_rounded, color: Colors.white, size: 20,)
+                    ],
+                  )),
+            ),
+          ],
+        );
+      });
     }
 
     print(puntosProvider.count2);
