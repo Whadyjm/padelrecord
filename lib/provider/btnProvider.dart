@@ -20,8 +20,12 @@ class BtnProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void fixedTeamsGame(){
+  void fixedTeamsGameTrue(){
     _fixedTeams = true;
+    notifyListeners();
+  }
+  void fixedTeamsGameFalse(){
+    _fixedTeams = false;
     notifyListeners();
   }
 }
