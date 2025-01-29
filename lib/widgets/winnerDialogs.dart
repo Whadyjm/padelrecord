@@ -14,6 +14,16 @@ class WinnerDialogs {
     final btnProvider = Provider.of<BtnProvider>(context, listen: false);
     final winnerProvider = Provider.of<WinnerProvider>(context, listen: false);
 
+    if(puntosProvider.set == 1 && (puntosProvider.count1==2 && puntosProvider.count2==3)){
+      puntosProvider.deuce();
+    }
+
+    if (puntosProvider.empate == true && puntosProvider.count1 == 3){
+      puntosProvider.deuce();
+      puntosProvider.advA();
+      return;
+    }
+
     if (puntosProvider.set == 1 && puntosProvider.count1 == 3){
 
       winnerProvider.addWinner(playerProvider.playersTeamA[0], playerProvider.playersTeamA[1], puntosProvider.set);
@@ -43,6 +53,7 @@ class WinnerDialogs {
             MaterialButton(
               onPressed: (){
                 puntosProvider.refresh();
+                puntosProvider.advA();
                 puntosProvider.stopConfetti();
                 Navigator.pop(context);
               },
@@ -179,6 +190,16 @@ class WinnerDialogs {
     final btnProvider = Provider.of<BtnProvider>(context, listen: false);
     final winnerProvider = Provider.of<WinnerProvider>(context, listen: false);
 
+    if(puntosProvider.set == 1 && (puntosProvider.count1==3 && puntosProvider.count2==2)){
+      puntosProvider.deuce();
+    }
+
+    if (puntosProvider.empate == true && puntosProvider.count2 == 3){
+      puntosProvider.deuce();
+      puntosProvider.advB();
+      return;
+    }
+
     if (puntosProvider.set == 1 && puntosProvider.count2 == 3){
 
       winnerProvider.addWinner(playerProvider.playersTeamB[0], playerProvider.playersTeamB[1], puntosProvider.set);
@@ -208,6 +229,7 @@ class WinnerDialogs {
             MaterialButton(
               onPressed: (){
                 puntosProvider.refresh();
+                puntosProvider.advB();
                 puntosProvider.stopConfetti();
                 Navigator.pop(context);
               },

@@ -10,7 +10,6 @@ class PuntosProvider with ChangeNotifier {
   int _setsTeamA = 0;
   int _setsTeamB = 0;
 
-
   bool _firstSet1 = false;
   bool _secondSet1 = false;
   bool _thirdSet1 = false;
@@ -18,6 +17,9 @@ class PuntosProvider with ChangeNotifier {
   bool _secondSet2 = false;
   bool _thirdSet2 = false;
   bool _confetti = false;
+  bool _empate = false;
+  bool _adv1 = false;
+  bool _adv2 = false;
 
   ConfettiController _controller = ConfettiController();
 
@@ -36,6 +38,9 @@ class PuntosProvider with ChangeNotifier {
   bool get secondSet2 => _secondSet2;
   bool get thirdSet2 => _thirdSet2;
   bool get confetti => _confetti;
+  bool get empate => _empate;
+  bool get adv1 => _adv1;
+  bool get adv2 => _adv2;
 
   ConfettiController get controller => _controller;
 
@@ -221,6 +226,33 @@ class PuntosProvider with ChangeNotifier {
 
   void stopConfetti(){
     _controller.stop();
+    notifyListeners();
+  }
+
+  void deuce(){
+    if (_empate == false){
+      _empate = true;
+    } else {
+     _empate = false;
+    }
+    notifyListeners();
+  }
+
+  void advA(){
+    if (_adv1 == false){
+      _adv1 = true;
+    } else {
+      _adv1 = false;
+    }
+    notifyListeners();
+  }
+
+  void advB(){
+    if (_adv2 == false){
+      _adv2 = true;
+    } else {
+      _adv2 = false;
+    }
     notifyListeners();
   }
 }

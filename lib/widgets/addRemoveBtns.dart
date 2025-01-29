@@ -20,9 +20,9 @@ class AddRemoveBtns extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          IconButton(onPressed: (){
-            puntosProvider.backScoreA();
-          }, icon: const Icon(Icons.remove)),
+          // IconButton(onPressed: (){
+          //   puntosProvider.backScoreA();
+          // }, icon: const Icon(Icons.remove)),
           Container(
             height: 50,
             width: 50,
@@ -49,9 +49,9 @@ class AddRemoveBtns extends StatelessWidget {
                 },
                 icon: const Icon(Icons.add, color: Colors.white,)),
           ),
-          IconButton(onPressed: (){
-            puntosProvider.backScoreB();
-          }, icon: const Icon(Icons.remove)),
+          // IconButton(onPressed: (){
+          //   puntosProvider.backScoreB();
+          // }, icon: const Icon(Icons.remove)),
         ],
       ),
     )
@@ -60,9 +60,9 @@ class AddRemoveBtns extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          IconButton(onPressed: (){
-            puntosProvider.backScoreA();
-          }, icon: const Icon(Icons.remove)),
+          // IconButton(onPressed: (){
+          //   puntosProvider.backScoreA();
+          // }, icon: const Icon(Icons.remove)),
           Container(
             height: 50,
             width: 50,
@@ -89,9 +89,9 @@ class AddRemoveBtns extends StatelessWidget {
                 },
                 icon: const Icon(Icons.add, color: Colors.white,)),
           ),
-          IconButton(onPressed: (){
-            puntosProvider.backScoreB();
-          }, icon: const Icon(Icons.remove)),
+          // IconButton(onPressed: (){
+          //   puntosProvider.backScoreB();
+          // }, icon: const Icon(Icons.remove)),
         ],
       ),
     );

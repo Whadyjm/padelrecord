@@ -132,7 +132,7 @@ class GameRandomTeams extends StatelessWidget {
                           ),
                           child: Center(child: Text('${puntosProvider.scoreA}',
                             style: const TextStyle(fontFamily: 'sf-pro-display', color: Colors.white, fontWeight: FontWeight.w700, fontSize: 25),))),
-                      Text('VS', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w900, fontSize: 20, color: btnProvider.darkMode ? Colors.white:Colors.grey.shade300,),),
+                      Text('VS', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w900, fontSize: 20, color: btnProvider.darkMode ? Colors.white:Colors.grey.shade800,),),
                       Container(
                           height: 50,
                           width: 50,
