@@ -11,7 +11,6 @@ class AddRemoveBtns extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final puntosProvider = Provider.of<PuntosProvider>(context);
     final btnProvider = Provider.of<BtnProvider>(context);
 
     return btnProvider.fixedTeams

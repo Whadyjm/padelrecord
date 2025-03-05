@@ -11,10 +11,15 @@ class WinnerDialogs {
 
     final puntosProvider = Provider.of<PuntosProvider>(context, listen: false);
     final playerProvider = Provider.of<PlayerProvider>(context, listen: false);
-    final btnProvider = Provider.of<BtnProvider>(context, listen: false);
     final winnerProvider = Provider.of<WinnerProvider>(context, listen: false);
 
-    if(puntosProvider.set == 1 && (puntosProvider.count1==2 && puntosProvider.count2==3)){
+    if (puntosProvider.adv2 == true && puntosProvider.count1 == 3){
+      puntosProvider.advB();
+      puntosProvider.deuce();
+      return;
+    }
+
+    if((puntosProvider.count1==2 && puntosProvider.count2==3)){
       puntosProvider.deuce();
     }
 
@@ -24,7 +29,11 @@ class WinnerDialogs {
       return;
     }
 
-    if (puntosProvider.set == 1 && puntosProvider.count1 == 3){
+    if ((puntosProvider.set == 1 && puntosProvider.count1 == 3)){
+
+      if (puntosProvider.set == 1 && puntosProvider.count1 == 3 && puntosProvider.count2 == 3){
+        puntosProvider.advA();
+      }
 
       winnerProvider.addWinner(playerProvider.playersTeamA[0], playerProvider.playersTeamA[1], puntosProvider.set);
       puntosProvider.startConfetti();
@@ -53,7 +62,6 @@ class WinnerDialogs {
             MaterialButton(
               onPressed: (){
                 puntosProvider.refresh();
-                puntosProvider.advA();
                 puntosProvider.stopConfetti();
                 Navigator.pop(context);
               },
@@ -76,6 +84,8 @@ class WinnerDialogs {
         );
       });
     } else if (puntosProvider.set == 2 && puntosProvider.count1 == 7){
+
+      puntosProvider.refresh();
 
       winnerProvider.addWinner(playerProvider.playersTeamA[0], playerProvider.playersTeamA[1], puntosProvider.set);
       puntosProvider.startConfetti();
@@ -177,7 +187,7 @@ class WinnerDialogs {
       });
     }
 
-    print(puntosProvider.count1);
+    print('count1: ${puntosProvider.count1}');
     puntosProvider.sets1(puntosProvider.count1);
     puntosProvider.setsByTeam();
     puntosProvider.addScoreA();
@@ -187,8 +197,13 @@ class WinnerDialogs {
 
     final puntosProvider = Provider.of<PuntosProvider>(context, listen: false);
     final playerProvider = Provider.of<PlayerProvider>(context, listen: false);
-    final btnProvider = Provider.of<BtnProvider>(context, listen: false);
     final winnerProvider = Provider.of<WinnerProvider>(context, listen: false);
+
+    if (puntosProvider.adv1 == true && puntosProvider.count2 == 3){
+      puntosProvider.advA();
+      puntosProvider.deuce();
+      return;
+    }
 
     if(puntosProvider.set == 1 && (puntosProvider.count1==3 && puntosProvider.count2==2)){
       puntosProvider.deuce();
@@ -200,7 +215,15 @@ class WinnerDialogs {
       return;
     }
 
+    if (puntosProvider.adv1 == true && puntosProvider.count2 == 4){
+      puntosProvider.advA();
+    }
+
     if (puntosProvider.set == 1 && puntosProvider.count2 == 3){
+
+      if (puntosProvider.set == 1 && puntosProvider.count2 == 3 && puntosProvider.count1 == 3){
+        puntosProvider.advB();
+      }
 
       winnerProvider.addWinner(playerProvider.playersTeamB[0], playerProvider.playersTeamB[1], puntosProvider.set);
       puntosProvider.startConfetti();
@@ -229,7 +252,6 @@ class WinnerDialogs {
             MaterialButton(
               onPressed: (){
                 puntosProvider.refresh();
-                puntosProvider.advB();
                 puntosProvider.stopConfetti();
                 Navigator.pop(context);
               },
@@ -252,6 +274,8 @@ class WinnerDialogs {
         );
       });
     } else if (puntosProvider.set == 2 && puntosProvider.count2 == 7){
+
+      puntosProvider.refresh();
 
       winnerProvider.addWinner(playerProvider.playersTeamB[0], playerProvider.playersTeamB[1], puntosProvider.set);
       puntosProvider.startConfetti();
@@ -353,7 +377,7 @@ class WinnerDialogs {
       });
     }
 
-    print(puntosProvider.count2);
+    print('count2: ${puntosProvider.count2}');
     puntosProvider.sets2(puntosProvider.count2);
     puntosProvider.setsByTeam();
     puntosProvider.addScoreB();

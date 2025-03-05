@@ -2,9 +2,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:padel_record/provider/btnProvider.dart';
-import 'package:padel_record/provider/playerProvider.dart';
-import 'package:padel_record/provider/puntosProvider.dart';
-import 'package:padel_record/view/gameScreen.dart';
+import 'package:padel_record/widgets/config.dart';
 import 'package:padel_record/widgets/createRandomTeam.dart';
 import 'package:padel_record/widgets/createTeamTab.dart';
 import 'package:provider/provider.dart';
@@ -25,19 +23,7 @@ class PlayerInputScreen extends StatelessWidget {
         appBar: AppBar(
           leading: IconButton(onPressed: (){
             showDialog(context: context, builder: (context){
-              return AlertDialog(
-                backgroundColor: Colors.white,
-                content: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('Modo nocturno', style: TextStyle(fontFamily: 'sf-pro-display', color: Colors.blue.shade800, fontSize: 18, fontWeight: FontWeight.w700),),
-                    IconButton(onPressed: (){
-                      btnProvider.switchDarkMode();
-                      Navigator.pop(context);
-                    }, icon: btnProvider.darkMode ? const Icon(Icons.sunny, color: Colors.amber,):Icon(Icons.dark_mode_rounded, color: Colors.blue.shade800,))
-                  ],
-                ),
-              );
+              return Config();
             });
           }, icon: Icon(Icons.menu_rounded, color: Colors.grey.shade700,)),
           actions: const [

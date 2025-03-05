@@ -43,7 +43,7 @@ class GameFixedTeams extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text('sets', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.bold),),
+                        const Text('Juegos', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.bold, fontSize: 18),),
                         const VerticalDivider(thickness: 1,),
                         IconButton(onPressed: (){
                           puntosProvider.removeSet();
@@ -51,7 +51,7 @@ class GameFixedTeams extends StatelessWidget {
                         Center(child: Text('${puntosProvider.set}',
                           style: TextStyle(fontFamily: 'sf-pro-display', color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700, fontSize: 20, fontWeight: FontWeight.w700),)),
                         IconButton(onPressed: (){
-                          puntosProvider.addSet();
+                          puntosProvider.addGame();
                         }, icon: const Icon(Icons.add)),
                       ],
                     )),
@@ -209,31 +209,31 @@ class GameFixedTeams extends StatelessWidget {
                       Column(
                         children: [
                           Visibility(
-                              visible: puntosProvider.firstSet1 ? true:false,
-                              child: Text('1er Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700),)),
+                              visible: puntosProvider.firstGame1 ? true:false,
+                              child: Text('1er Juego', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700),)),
                           const SizedBox(height: 10,),
                           Visibility(
-                              visible: puntosProvider.secondSet1 ? true:false,
-                              child: Text('2do Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700),)),
+                              visible: puntosProvider.secondGame1 ? true:false,
+                              child: Text('2do Juego', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700),)),
                           const SizedBox(height: 10,),
                           Visibility(
-                              visible: puntosProvider.thirdSet1 ? true:false,
-                              child: Text('3er Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700),)),
+                              visible: puntosProvider.thirdGame1 ? true:false,
+                              child: Text('3er Juego', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700),)),
                         ],
                       ),
                       Column(
                         children: [
                           Visibility(
-                              visible: puntosProvider.firstSet2 ? true:false,
-                              child: Text('1er Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700),)),
+                              visible: puntosProvider.firstGame2 ? true:false,
+                              child: Text('1er Juego', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700),)),
                           const SizedBox(height: 10,),
                           Visibility(
-                              visible: puntosProvider.secondSet2 ? true:false,
-                              child: Text('2do Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700),)),
+                              visible: puntosProvider.secondGame2 ? true:false,
+                              child: Text('2do Juego', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700),)),
                           const SizedBox(height: 10,),
                           Visibility(
-                              visible: puntosProvider.thirdSet2 ? true:false,
-                              child: Text('3er Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700),)),
+                              visible: puntosProvider.thirdGame2 ? true:false,
+                              child: Text('3er Juego', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700),)),
                         ],
                       ),
                     ],

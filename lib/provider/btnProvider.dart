@@ -6,11 +6,15 @@ class BtnProvider with ChangeNotifier {
   bool _showTextFieldB = false;
   bool _fixedTeams = false;
   bool _darkMode = false;
+  bool _goldPoint = false;
+  bool _ventaja = true;
 
   bool get showTextFieldA => _showTextFieldA;
   bool get showTextFieldB => _showTextFieldB;
   bool get fixedTeams => _fixedTeams;
   bool get darkMode => _darkMode;
+  bool get goldPoint => _goldPoint;
+  bool get ventaja => _ventaja;
 
   void showTextField1(){
     _showTextFieldA = true;
@@ -37,6 +41,22 @@ class BtnProvider with ChangeNotifier {
       _darkMode = false;
     } else {
       _darkMode = true;
+    }
+    notifyListeners();
+  }
+
+  void puntoDeOro(){
+    if (_goldPoint == false){
+      _goldPoint = true;
+      _ventaja = false;
+    }
+    notifyListeners();
+  }
+
+  void sistDeVentaja(){
+    if (_ventaja == false){
+      _ventaja = true;
+      _goldPoint = false;
     }
     notifyListeners();
   }
