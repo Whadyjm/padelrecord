@@ -37,11 +37,7 @@ class BtnProvider with ChangeNotifier {
 
   void switchDarkMode(){
 
-    if (_darkMode == true){
-      _darkMode = false;
-    } else {
-      _darkMode = true;
-    }
+    _darkMode = !_darkMode;
     notifyListeners();
   }
 

@@ -245,7 +245,7 @@ class GameRandomTeams extends StatelessWidget {
                                 Text('${winner.player1.toUpperCase()} - ${winner.player2.toUpperCase()}', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w700, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700)),
                               ],
                             ),
-                            subtitle: Text('Sets: ${winner.sets}', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600,  color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700)),
+                            subtitle: Text('Juegos: ${winner.sets}', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600,  color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700)),
                           );
                         }
                     ),

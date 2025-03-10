@@ -3,6 +3,7 @@ import 'package:padel_record/provider/btnProvider.dart';
 import 'package:padel_record/provider/playerProvider.dart';
 import 'package:padel_record/provider/puntosProvider.dart';
 import 'package:padel_record/view/gameScreen.dart';
+import 'package:padel_record/widgets/playerTextField.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/winnerProvider.dart';
@@ -44,26 +45,7 @@ class CreateTeamTab extends StatelessWidget {
                 btnProvider.showTextFieldA
                     ? Row(
                   children: [
-                    SizedBox(
-                        height: 50,
-                        width: 200,
-                        child: TextField(
-                          controller: nombreControllerA,
-                          cursorColor: Colors.blue,
-                          decoration: const InputDecoration(
-                            hintText: 'Ingresa el nombre',
-                            filled: true,
-                            fillColor: Colors.white,
-                            border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.blue),
-                            ),
-                          ),
-                        )
-                    ),
+                    PlayerTextField(nombre: nombreControllerA,),
                     Container(
                       height: 50,
                       width: 50,
@@ -152,29 +134,9 @@ class CreateTeamTab extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text('Equipo B', style: TextStyle(fontFamily: 'sf-pro-display', color: Colors.blue.shade800, fontSize: 25, fontWeight: FontWeight.w800),),
-                btnProvider.showTextFieldB
-                    ? Row(
+                if (btnProvider.showTextFieldB) Row(
                   children: [
-                    SizedBox(
-                        height: 50,
-                        width: 200,
-                        child: TextField(
-                          controller: nombreControllerB,
-                          cursorColor: Colors.blue,
-                          decoration: const InputDecoration(
-                            hintText: 'Ingresa el nombre',
-                            filled: true,
-                            fillColor: Colors.white,
-                            border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.blue),
-                            ),
-                          ),
-                        )
-                    ),
+                    PlayerTextField(nombre: nombreControllerB,),
                     Container(
                       height: 50,
                       width: 50,
@@ -213,8 +175,7 @@ class CreateTeamTab extends StatelessWidget {
                           icon: const Icon(Icons.add, color: Colors.white,)),
                     ),
                   ],
-                )
-                    : IconButton(
+                ) else IconButton(
                     onPressed: (){
                       btnProvider.showTextField2();
                     },
@@ -284,3 +245,4 @@ class CreateTeamTab extends StatelessWidget {
     );
   }
 }
+
