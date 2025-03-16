@@ -20,12 +20,16 @@ class PlayerInputScreen extends StatelessWidget {
       length: 2,
       child: Scaffold(
         backgroundColor: btnProvider.darkMode ? Colors.grey.shade900:Colors.grey.shade300,
+        ///
+        ///Configura modo de juego y modo claro - oscuro
+        ///
         appBar: AppBar(
           leading: IconButton(onPressed: (){
             showDialog(context: context, builder: (context){
               return Config();
             });
           }, icon: Icon(Icons.menu_rounded, color: Colors.grey.shade700,)),
+          ///
           actions: const [
             Padding(
               padding: EdgeInsets.all(12.0),

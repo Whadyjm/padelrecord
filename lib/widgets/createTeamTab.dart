@@ -28,7 +28,7 @@ class CreateTeamTab extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            playerProvider.playersTeamA.length == 2
+            playerProvider.playersTeamA.length == 2     ///si el equipo A tiene 2 jugadores
                 ? const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -37,6 +37,8 @@ class CreateTeamTab extends StatelessWidget {
                   padding: EdgeInsets.all(8.0),
                   child: Icon(Icons.check_circle, color: Colors.lightGreen, size: 30,),
                 ),
+                ///
+                ///
               ],)
                 : Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -56,29 +58,14 @@ class CreateTeamTab extends StatelessWidget {
                       child: IconButton(
                           onPressed: (){
                             if (nombreControllerA.text.isEmpty) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  duration: Duration(seconds: 1),
-                                  content: Text('Debes agregar un nombre'),
-                                ),
-                              );
+                              snackbar1(context);
                             } else if (nombreControllerA.text.length > 6){
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  duration: Duration(seconds: 1),
-                                  content: Text('El nombre no debe superar los 6 caracteres'),
-                                ),
-                              );
+                              snackbar2(context);
                             } else if (playerProvider.playersTeamA.length < 2){
-                              playerProvider.addPlayersTeamA(nombreControllerA.text);
+                              playerProvider.addPlayersTeamA(nombreControllerA.text.trim());
                               nombreControllerA.clear();
                             } else if (playerProvider.playersTeamA.length == 2){
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  duration: Duration(seconds: 1),
-                                  content: Text('Equipo completo'),
-                                ),
-                              );
+                              snackbar3(context);
                             }
                           },
                           icon: const Icon(Icons.add, color: Colors.white,)),
@@ -147,29 +134,14 @@ class CreateTeamTab extends StatelessWidget {
                       child: IconButton(
                           onPressed: (){
                             if (nombreControllerB.text.isEmpty) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  duration: Duration(seconds: 1),
-                                  content: Text('Debes agregar un nombre'),
-                                ),
-                              );
+                              snackbar1(context);
                             } else if (nombreControllerB.text.length > 6){
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  duration: Duration(seconds: 1),
-                                  content: Text('El nombre no debe superar los 6 caracteres'),
-                                ),
-                              );
+                              snackbar2(context);
                             } else if (playerProvider.playersTeamB.length < 2){
                               playerProvider.addPlayersTeamB(nombreControllerB.text);
                               nombreControllerB.clear();
                             } else if (playerProvider.playersTeamB.length == 2){
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  duration: Duration(seconds: 1),
-                                  content: Text('Equipo completo'),
-                                ),
-                              );
+                              snackbar3(context);
                             }
                           },
                           icon: const Icon(Icons.add, color: Colors.white,)),
@@ -212,23 +184,7 @@ class CreateTeamTab extends StatelessWidget {
             const SizedBox(height: 50,),
             MaterialButton(
               onPressed: (){
-
-                puntosProvider.refresh();
-                winnerProvider.clearWinner();
-
-                if (playerProvider.playersTeamA.length + playerProvider.playersTeamB.length == 4){
-                  btnProvider.fixedTeamsGameTrue();
-                  Navigator.push(context, MaterialPageRoute(builder: (context){
-                    return GameScreen();
-                  }));
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      duration: Duration(seconds: 1),
-                      content: Text('Se necesitan al menos 4 jugadores'),
-                    ),
-                  );
-                }
+                startGame(puntosProvider, winnerProvider, playerProvider, btnProvider, context);
               },
               child: Container(
                   height: 50,
@@ -241,6 +197,56 @@ class CreateTeamTab extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  void startGame(PuntosProvider puntosProvider, WinnerProvider winnerProvider, PlayerProvider playerProvider, BtnProvider btnProvider, BuildContext context) {
+    puntosProvider.refresh();
+    winnerProvider.clearWinner();
+
+    if (playerProvider.playersTeamA.length + playerProvider.playersTeamB.length == 4){
+      btnProvider.fixedTeamsGameTrue();
+      Navigator.push(context, MaterialPageRoute(builder: (context){
+        return GameScreen();
+      }));
+    } else {
+      snackbar4(context);
+    }
+  }
+
+  void snackbar4(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        duration: Duration(seconds: 1),
+        content: Text('Se necesitan al menos 4 jugadores'),
+      ),
+    );
+  }
+
+  void snackbar3(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        duration: Duration(seconds: 1),
+        content: Text('Equipo completo'),
+      ),
+    );
+  }
+
+  void snackbar2(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        duration: Duration(seconds: 1),
+        content: Text('El nombre no debe superar los 6 caracteres'),
+      ),
+    );
+  }
+
+  void snackbar1(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        duration: Duration(seconds: 1),
+        content: Text('Debes agregar un nombre'),
       ),
     );
   }

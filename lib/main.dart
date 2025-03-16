@@ -33,7 +33,6 @@ class PadelApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Partida de Padel',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
