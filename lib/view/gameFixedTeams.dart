@@ -8,10 +8,10 @@ import 'package:padel_record/widgets/teamGameScore.dart';
 import 'package:provider/provider.dart';
 import '../provider/playerProvider.dart';
 import '../provider/puntosProvider.dart';
-import 'deuceLabel.dart';
-import 'gameScore.dart';
-import 'gameSelector.dart';
-import 'newGameBtn.dart';
+import '../widgets/deuceLabel.dart';
+import '../widgets/gameScore.dart';
+import '../widgets/gameSelector.dart';
+import '../widgets/newGameBtn.dart';
 
 class GameFixedTeams extends StatelessWidget {
   const GameFixedTeams({super.key});

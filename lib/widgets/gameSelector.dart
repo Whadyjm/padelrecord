@@ -29,7 +29,7 @@ class GameSelector extends StatelessWidget {
               IconButton(onPressed: (){
                 puntosProvider.removeSet();
               }, icon: const Icon(Icons.remove)),
-              Center(child: Text('${puntosProvider.set}',
+              Center(child: Text('${puntosProvider.game}',
                 style: TextStyle(fontFamily: 'sf-pro-display', color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700, fontSize: 20, fontWeight: FontWeight.w700),)),
               IconButton(onPressed: (){
                 puntosProvider.addGame();

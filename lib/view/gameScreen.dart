@@ -4,8 +4,8 @@ import 'package:padel_record/provider/btnProvider.dart';
 import 'package:padel_record/provider/playerProvider.dart';
 import 'package:padel_record/provider/puntosProvider.dart';
 import 'package:padel_record/widgets/addRemoveBtns.dart';
-import 'package:padel_record/widgets/gameFixedTeams.dart';
-import 'package:padel_record/widgets/gameRandomTeams.dart';
+import 'package:padel_record/view/gameFixedTeams.dart';
+import 'package:padel_record/view/gameRandomTeams.dart';
 import 'package:provider/provider.dart';
 
 class GameScreen extends StatefulWidget {

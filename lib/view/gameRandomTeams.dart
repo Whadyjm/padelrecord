@@ -1,13 +1,15 @@
 import 'package:confetti/confetti.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:padel_record/widgets/gameSelector.dart';
+import 'package:padel_record/widgets/newGameBtn.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/btnProvider.dart';
 import '../provider/playerProvider.dart';
 import '../provider/puntosProvider.dart';
 import '../provider/winnerProvider.dart';
-import 'addRemoveBtns.dart';
+import '../widgets/addRemoveBtns.dart';
 
 class GameRandomTeams extends StatelessWidget {
   const GameRandomTeams({super.key});
@@ -33,31 +35,7 @@ class GameRandomTeams extends StatelessWidget {
                 onPressed: () {
                   Navigator.pop(context);
                 },),
-              title: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                    height: 40,
-                    width: 200,
-                    decoration: BoxDecoration(
-                        color: Colors.white38,
-                        borderRadius: BorderRadius.circular(12)
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text('Juegos', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.bold, fontSize: 18),),
-                        const VerticalDivider(thickness: 1,),
-                        IconButton(onPressed: (){
-                          puntosProvider.removeSet();
-                        }, icon: const Icon(Icons.remove)),
-                        Center(child: Text('${puntosProvider.set}',
-                          style: TextStyle(fontFamily: 'sf-pro-display', color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700, fontSize: 20, fontWeight: FontWeight.w700),)),
-                        IconButton(onPressed: (){
-                          puntosProvider.addGame();
-                        }, icon: const Icon(Icons.add)),
-                      ],
-                    )),
-              ),
+              title: const GameSelector(),
               actions: [
                 IconButton(
                   onPressed: () {
@@ -69,26 +47,7 @@ class GameRandomTeams extends StatelessWidget {
             ),
             body: Column(
               children: [
-                MaterialButton(
-                  onPressed: (){
-                    puntosProvider.refresh();
-                    playerProvider.assignTeams();
-                  },
-                  child: Container(
-                      height: 40,
-                      width: 200,
-                      decoration: BoxDecoration(
-                          color: Colors.blue.shade400,
-                          borderRadius: BorderRadius.circular(12)
-                      ),
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text('Nueva partida', style: TextStyle(fontFamily: 'sf-pro-display', fontSize: 18, color: Colors.white, fontWeight: FontWeight.w700),),
-                          Icon(Icons.sports_tennis_rounded, color: Colors.white, size: 20,)
-                        ],
-                      )),
-                ),
+                const NewGameBtn(),
                 const SizedBox(height: 40,),
                 Padding(
                   padding: const EdgeInsets.all(16.0),

@@ -35,7 +35,7 @@ class PuntosProvider with ChangeNotifier {
   int get scoreB => _scoreB;
   int get count1 => _count1;
   int get count2 => _count2;
-  int get set => _game;
+  int get game => _game;
   int get setsTeamA => _gameTeamA;
   int get setsTeamB => _gameTeamB;
 
@@ -182,7 +182,7 @@ class PuntosProvider with ChangeNotifier {
     notifyListeners();
   }
   void removeSet(){
-    if (set > 1){
+    if (game > 1){
       _game--;
     }
     notifyListeners();
