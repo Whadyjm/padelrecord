@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:padel_record/provider/btnProvider.dart';
-import 'package:padel_record/provider/puntosProvider.dart';
-import 'package:padel_record/widgets/winnerDialogs.dart';
 import 'package:provider/provider.dart';
 
 class AddRemoveBtns extends StatelessWidget {
@@ -31,7 +29,6 @@ class AddRemoveBtns extends StatelessWidget {
             ),
             child: IconButton(
                 onPressed: (){
-                  WinnerDialogs().teamAWinnerFixed(context);
                 },
                 icon: const Icon(Icons.add, color: Colors.white,)),
           ),
@@ -44,7 +41,6 @@ class AddRemoveBtns extends StatelessWidget {
             ),
             child: IconButton(
                 onPressed: (){
-                  WinnerDialogs().teamBWinnerFixed(context);
                 },
                 icon: const Icon(Icons.add, color: Colors.white,)),
           ),
@@ -71,7 +67,6 @@ class AddRemoveBtns extends StatelessWidget {
             ),
             child: IconButton(
                 onPressed: (){
-                  WinnerDialogs().teamAWinnerRandom(context);
                 },
                 icon: const Icon(Icons.add, color: Colors.white,)),
           ),
@@ -84,7 +79,6 @@ class AddRemoveBtns extends StatelessWidget {
             ),
             child: IconButton(
                 onPressed: (){
-                  WinnerDialogs().teamBWinnerRandom(context);
                 },
                 icon: const Icon(Icons.add, color: Colors.white,)),
           ),

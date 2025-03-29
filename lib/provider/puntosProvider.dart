@@ -39,14 +39,12 @@ class PuntosProvider with ChangeNotifier {
   int get setsTeamA => _gameTeamA;
   int get setsTeamB => _gameTeamB;
 
-
   bool get firstGame1 => _firstGame1;
   bool get secondGame1 => _secondGame1;
   bool get thirdGame1 => _thirdGame1;
   bool get fourthGame1 => _fourthGame1;
   bool get fifthGame1 => _fifthGame1;
   bool get sixthGame1 => _sixthGame1;
-
 
   bool get firstGame2 => _firstGame2;
   bool get secondGame2 => _secondGame2;
@@ -62,96 +60,96 @@ class PuntosProvider with ChangeNotifier {
 
   ConfettiController get controller => _controller;
 
-  void addScoreA(){
+  void addScoreA() {
     if (_count1 == 12) {
       return;
     }
     _count1++;
-    if (_count1 == 1){
+    if (_count1 == 1) {
       _scoreA = 15;
-    } else if (count1 == 2){
+    } else if (count1 == 2) {
       _scoreA = 30;
-    } else if (count1 == 3){
+    } else if (count1 == 3) {
       _scoreA = 40;
-    } else if (count1 == 4){
+    } else if (count1 == 4) {
       _scoreA = 0;
-    } else if (count1 == 5){
+    } else if (count1 == 5) {
       _scoreA = 15;
-    } else if (count1 == 6){
+    } else if (count1 == 6) {
       _scoreA = 30;
-    } else if (count1 == 7){
+    } else if (count1 == 7) {
       _scoreA = 40;
-    } else if (count1 == 8){
+    } else if (count1 == 8) {
       _scoreA = 0;
-    } else if (count1 == 9){
+    } else if (count1 == 9) {
       _scoreA = 15;
-    } else if (count1 == 10){
+    } else if (count1 == 10) {
       _scoreA = 30;
-    } else if (count1 == 11){
+    } else if (count1 == 11) {
       _scoreA = 40;
-    } else if (count1 == 12){
+    } else if (count1 == 12) {
       _scoreA = 0;
     }
     notifyListeners();
   }
 
-  void backScoreA(){
+  void backScoreA() {
     if (_scoreA > 0) {
       _count1--;
     }
     notifyListeners();
   }
 
-  void addScoreB(){
+  void addScoreB() {
     if (_count2 == 12) {
       return;
     }
     _count2++;
-    if (_count2 == 1){
+    if (_count2 == 1) {
       _scoreB = 15;
-    } else if (count2 == 2){
+    } else if (count2 == 2) {
       _scoreB = 30;
-    } else if (count2 == 3){
+    } else if (count2 == 3) {
       _scoreB = 40;
-    } else if (count2 == 4){
+    } else if (count2 == 4) {
       _scoreB = 0;
-    } else if (count2 == 5){
+    } else if (count2 == 5) {
       _scoreB = 15;
-    } else if (count2 == 6){
+    } else if (count2 == 6) {
       _scoreB = 30;
-    } else if (count2 == 7){
+    } else if (count2 == 7) {
       _scoreB = 40;
-    } else if (count2 == 8){
+    } else if (count2 == 8) {
       _scoreB = 0;
-    } else if (count2 == 9){
+    } else if (count2 == 9) {
       _scoreB = 15;
-    } else if (count2 == 10){
+    } else if (count2 == 10) {
       _scoreB = 30;
-    } else if (count2 == 11){
+    } else if (count2 == 11) {
       _scoreB = 40;
-    } else if (count2 == 12){
+    } else if (count2 == 12) {
       _scoreB = 0;
     }
     notifyListeners();
   }
 
-  void backScoreB(){
+  void backScoreB() {
     if (_scoreB > 0) {
       _count2--;
-      if (_count2 == 0){
+      if (_count2 == 0) {
         _scoreB = 0;
-      } else if (_count2 == 1){
+      } else if (_count2 == 1) {
         _scoreB = 15;
-      } else if (_count2 == 2){
+      } else if (_count2 == 2) {
         _scoreB = 30;
-      } else if (_count2 == 3){
+      } else if (_count2 == 3) {
         _scoreB = 40;
       }
     }
     notifyListeners();
   }
 
-  void refresh(){
+  void refresh() {
     _scoreA = 0;
     _scoreB = 0;
     _count1 = 0;
@@ -167,34 +165,34 @@ class PuntosProvider with ChangeNotifier {
     _adv1 = false;
     _adv2 = false;
 
-    if (_empate == true){
+    if (_empate == true) {
       _empate = false;
     }
     notifyListeners();
   }
 
-  void addGame(){
-
-    if (_game < 6){
+  void addGame() {
+    if (_game < 6) {
       _game++;
     }
 
     notifyListeners();
   }
-  void removeSet(){
-    if (game > 1){
+
+  void removeSet() {
+    if (game > 1) {
       _game--;
     }
     notifyListeners();
   }
 
-  void sets1 (int count){
-    if (count == 3){
+  void sets1(int count) {
+    if (count == 3) {
       _firstGame1 = true;
-    } else if (count == 7){
+    } else if (count == 7) {
       _firstGame1 = true;
       _secondGame1 = true;
-    } else if (count == 11){
+    } else if (count == 11) {
       _firstGame1 = true;
       _secondGame1 = true;
       _thirdGame1 = true;
@@ -202,13 +200,13 @@ class PuntosProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void sets2 (int count){
-    if (count == 3){
+  void sets2(int count) {
+    if (count == 3) {
       _firstGame2 = true;
-    } else if (count == 7){
+    } else if (count == 7) {
       _firstGame2 = true;
       _secondGame2 = true;
-    } else if (count == 11){
+    } else if (count == 11) {
       _firstGame2 = true;
       _secondGame2 = true;
       _thirdGame2 = true;
@@ -216,8 +214,8 @@ class PuntosProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void setsByTeam (){
-    if (_firstGame1 == true){
+  void setsByTeam() {
+    if (_firstGame1 == true) {
       _gameTeamA = 1;
     } else if (_secondGame1 == true) {
       _gameTeamA = 2;
@@ -225,7 +223,7 @@ class PuntosProvider with ChangeNotifier {
       _gameTeamA = 3;
     }
 
-    if (_firstGame2 == true){
+    if (_firstGame2 == true) {
       _gameTeamB = 1;
     } else if (_secondGame2 == true) {
       _gameTeamB = 2;
@@ -234,27 +232,27 @@ class PuntosProvider with ChangeNotifier {
     }
   }
 
-  void startConfetti(){
+  void startConfetti() {
     _controller.play();
     notifyListeners();
   }
 
-  void stopConfetti(){
+  void stopConfetti() {
     _controller.stop();
     notifyListeners();
   }
 
-  void deuce(){
-    if (_empate == false){
+  void deuce() {
+    if (_empate == false) {
       _empate = true;
     } else {
-     _empate = false;
+      _empate = false;
     }
     notifyListeners();
   }
 
-  void advA(){
-    if (_adv1 == false){
+  void advA() {
+    if (_adv1 == false) {
       _adv1 = true;
     } else {
       _adv1 = false;
@@ -262,8 +260,8 @@ class PuntosProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void advB(){
-    if (_adv2 == false){
+  void advB() {
+    if (_adv2 == false) {
       _adv2 = true;
     } else {
       _adv2 = false;
