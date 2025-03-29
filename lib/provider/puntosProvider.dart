@@ -2,7 +2,6 @@ import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 
 class PuntosProvider with ChangeNotifier {
-
   ///Variables
   int _scoreA = 0;
   int _scoreB = 0;
@@ -28,8 +27,8 @@ class PuntosProvider with ChangeNotifier {
 
   bool _confetti = false;
   bool _empate = false;
-  bool _adv1 = false;
-  bool _adv2 = false;
+  bool _advA = false;
+  bool _advB = false;
 
   ConfettiController _controller = ConfettiController();
 
@@ -58,79 +57,98 @@ class PuntosProvider with ChangeNotifier {
 
   bool get confetti => _confetti;
   bool get empate => _empate;
-  bool get adv1 => _adv1;
-  bool get adv2 => _adv2;
+  bool get advA => _advA;
+  bool get advB => _advB;
 
   ConfettiController get controller => _controller;
 
+  ///muestra banner de empate
   void deuceRequest() {
-    if (_scoreA == 40 && _scoreB == 40) {
-      if (_empate == false) {
-        _empate = true;
-      } else {
-        _empate = false;
-      }
-      notifyListeners();
-    }
-  }
-  void addScoreA() {
-    _counterA++;
-    if (_counterA == 1) {
-      _scoreA = 15;
-    } else if (_counterA == 2) {
-      _scoreA = 30;
-    } else if (_counterA == 3) {
-      deuceRequest();
-      _scoreA = 40;
-    } else if (_counterA == 4) {
-      _scoreA = 0;
-    } else if (_counterA == 5) {
-      _scoreA = 15;
-    } else if (_counterA == 6) {
-      _scoreA = 30;
-    } else if (_counterA == 7) {
-      _scoreA = 40;
-    } else if (_counterA == 8) {
-      _scoreA = 0;
-    } else if (_counterA == 9) {
-      _scoreA = 15;
-    } else if (_counterA == 10) {
-      _scoreA = 30;
-    } else if (_counterA == 11) {
-      _scoreA = 40;
-    } else if (_counterA == 12) {
-      _scoreA = 0;
+    if (_counterA == 3 && _counterB == 3) {
+      _empate = true;
+    } else {
+      _empate = false;
     }
     notifyListeners();
   }
 
+  ///ventaja de TeamA
+  void advTeamA() {
+    if (_counterA == 4 && _counterB == 3 && _empate == true) {
+      _advA = true;
+    }
+  }
+///TODO: mostrar equipo ganador!!!
+  /// Añade puntos a Team A
+  void addScoreA() {
+    if (_empate) {
+      if (_advA) {
+        _scoreA = 0;
+        _scoreB = 0;
+        _counterA = 0;
+        _counterB = 0;
+        _gameTeamA++;
+        _empate = false;
+        _advA = false;
+        _advB = false;
+      } else if (_advB) {
+        _advB = false;
+      } else {
+        _advA = true;
+      }
+    } else {
+      _counterA++;
+      if (_counterA == 1) {
+        _scoreA = 15;
+      } else if (_counterA == 2) {
+        _scoreA = 30;
+      } else if (_counterA == 3) {
+        _scoreA = 40;
+        deuceRequest();
+      } else if (_counterA == 4) {
+        _scoreA = 0;
+        _scoreB = 0;
+        _counterA = 0;
+        _counterB = 0;
+        _gameTeamA++;
+      }
+    }
+    notifyListeners();
+  }
+
+  /// Añade puntos a Team B
   void addScoreB() {
-    _counterB++;
-    if (_counterB == 1) {
-      _scoreB = 15;
-    } else if (_counterB == 2) {
-      _scoreB = 30;
-    } else if (_counterB == 3) {
-      deuceRequest();
-      _scoreB = 40;
-    } else if (_counterB == 4) {
-      _scoreB = 0;
-    } else if (_counterB == 5) {
-      _scoreB = 15;
-    } else if (_counterB == 6) {
-      _scoreB = 30;
-    } else if (_counterB == 7) {
-      _scoreB = 40;
-    } else if (_counterB == 8) {
-      _scoreB = 0;
-    } else if (_counterB == 9) {
-      _scoreB = 15;
-    } else if (_counterB == 10) {
-      _scoreB = 30;
-    } else if (_counterB == 11) {
-      _scoreB = 40;
-    } else if (_counterB == 12) {
-      _scoreB = 0;
+    if (_empate) {
+      if (_advB) {
+        _scoreA = 0;
+        _scoreB = 0;
+        _counterA = 0;
+        _counterB = 0;
+        _gameTeamB++;
+        _empate = false;
+        _advA = false;
+        _advB = false;
+      } else if (_advA) {
+        _advA = false;
+      } else {
+        _advB = true;
+      }
+    } else {
+      _counterB++;
+      if (_counterB == 1) {
+        _scoreB = 15;
+      } else if (_counterB == 2) {
+        _scoreB = 30;
+      } else if (_counterB == 3) {
+        _scoreB = 40;
+        deuceRequest();
+      } else if (_counterB == 4) {
+        _scoreA = 0;
+        _scoreB = 0;
+        _counterA = 0;
+        _counterB = 0;
+        _gameTeamB++;
+      }
     }
     notifyListeners();
   }
@@ -148,8 +166,8 @@ class PuntosProvider with ChangeNotifier {
     _secondGame2 = false;
     _thirdGame2 = false;
 
-    _adv1 = false;
-    _adv2 = false;
+    _advA = false;
+    _advB = false;
 
     if (_empate == true) {
       _empate = false;
@@ -200,7 +218,7 @@ class PuntosProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void setsByTeam() {
+  void gameByTeam() {
     if (_firstGame1 == true) {
       _gameTeamA = 1;
     } else if (_secondGame1 == true) {
@@ -225,33 +243,6 @@ class PuntosProvider with ChangeNotifier {
 
   void stopConfetti() {
     _controller.stop();
-    notifyListeners();
-  }
-
-  void deuce() {
-    if (_empate == false) {
-      _empate = true;
-    } else {
-      _empate = false;
-    }
-    notifyListeners();
-  }
-
-  void advA() {
-    if (_adv1 == false) {
-      _adv1 = true;
-    } else {
-      _adv1 = false;
-    }
-    notifyListeners();
-  }
-
-  void advB() {
-    if (_adv2 == false) {
-      _adv2 = true;
-    } else {
-      _adv2 = false;
-    }
     notifyListeners();
   }
 }

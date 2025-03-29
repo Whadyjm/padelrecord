@@ -54,7 +54,7 @@ class GameScore extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
               color: Colors.black,
             ),
-            child: Center(child: Text('${puntosProvider.adv1 ? 'Adv':puntosProvider.scoreA}',
+            child: Center(child: Text('${puntosProvider.advA ? 'Adv':puntosProvider.scoreA}',
               style: const TextStyle(fontFamily: 'sf-pro-display', color: Colors.white, fontWeight: FontWeight.w700, fontSize: 25),))),
         Text('VS', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w900, fontSize: 20, color: btnProvider.darkMode ? Colors.white:Colors.grey.shade800,),),
         Container(
@@ -64,7 +64,7 @@ class GameScore extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
               color: Colors.black,
             ),
-            child: Center(child: Text('${puntosProvider.adv2 ? 'Adv':puntosProvider.scoreB}',
+            child: Center(child: Text('${puntosProvider.advB ? 'Adv':puntosProvider.scoreB}',
               style: const TextStyle(fontFamily: 'sf-pro-display', color: Colors.white, fontWeight: FontWeight.w700, fontSize: 25),))),
         Container(
           height: 50,
