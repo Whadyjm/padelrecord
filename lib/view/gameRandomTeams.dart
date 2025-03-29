@@ -9,7 +9,7 @@ import '../provider/btnProvider.dart';
 import '../provider/playerProvider.dart';
 import '../provider/puntosProvider.dart';
 import '../provider/winnerProvider.dart';
-import '../widgets/addRemoveBtns.dart';
+import '../widgets/addBtn.dart';
 
 class GameRandomTeams extends StatelessWidget {
   const GameRandomTeams({super.key});

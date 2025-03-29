@@ -2,10 +2,12 @@ import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 
 class PuntosProvider with ChangeNotifier {
+
+  ///Variables
   int _scoreA = 0;
   int _scoreB = 0;
-  int _count1 = 0;
-  int _count2 = 0;
+  int _counterA = 0;
+  int _counterB = 0;
   int _game = 1;
   int _gameTeamA = 0;
   int _gameTeamB = 0;
@@ -31,10 +33,11 @@ class PuntosProvider with ChangeNotifier {
 
   ConfettiController _controller = ConfettiController();
 
+  ///Getters
   int get scoreA => _scoreA;
   int get scoreB => _scoreB;
-  int get count1 => _count1;
-  int get count2 => _count2;
+  int get counterA => _counterA;
+  int get counterB => _counterB;
   int get game => _game;
   int get setsTeamA => _gameTeamA;
   int get setsTeamB => _gameTeamB;
@@ -60,91 +63,74 @@ class PuntosProvider with ChangeNotifier {
 
   ConfettiController get controller => _controller;
 
-  void addScoreA() {
-    if (_count1 == 12) {
-      return;
+  void deuceRequest() {
+    if (_scoreA == 40 && _scoreB == 40) {
+      if (_empate == false) {
+        _empate = true;
+      } else {
+        _empate = false;
+      }
+      notifyListeners();
     }
-    _count1++;
-    if (_count1 == 1) {
-      _scoreA = 15;
-    } else if (count1 == 2) {
-      _scoreA = 30;
-    } else if (count1 == 3) {
-      _scoreA = 40;
-    } else if (count1 == 4) {
-      _scoreA = 0;
-    } else if (count1 == 5) {
-      _scoreA = 15;
-    } else if (count1 == 6) {
-      _scoreA = 30;
-    } else if (count1 == 7) {
-      _scoreA = 40;
-    } else if (count1 == 8) {
-      _scoreA = 0;
-    } else if (count1 == 9) {
-      _scoreA = 15;
-    } else if (count1 == 10) {
-      _scoreA = 30;
-    } else if (count1 == 11) {
-      _scoreA = 40;
-    } else if (count1 == 12) {
-      _scoreA = 0;
-    }
-    notifyListeners();
   }
-
-  void backScoreA() {
-    if (_scoreA > 0) {
-      _count1--;
+  void addScoreA() {
+    _counterA++;
+    if (_counterA == 1) {
+      _scoreA = 15;
+    } else if (_counterA == 2) {
+      _scoreA = 30;
+    } else if (_counterA == 3) {
+      deuceRequest();
+      _scoreA = 40;
+    } else if (_counterA == 4) {
+      _scoreA = 0;
+    } else if (_counterA == 5) {
+      _scoreA = 15;
+    } else if (_counterA == 6) {
+      _scoreA = 30;
+    } else if (_counterA == 7) {
+      _scoreA = 40;
+    } else if (_counterA == 8) {
+      _scoreA = 0;
+    } else if (_counterA == 9) {
+      _scoreA = 15;
+    } else if (_counterA == 10) {
+      _scoreA = 30;
+    } else if (_counterA == 11) {
+      _scoreA = 40;
+    } else if (_counterA == 12) {
+      _scoreA = 0;
     }
     notifyListeners();
   }
 
   void addScoreB() {
-    if (_count2 == 12) {
-      return;
-    }
-    _count2++;
-    if (_count2 == 1) {
+    _counterB++;
+    if (_counterB == 1) {
       _scoreB = 15;
-    } else if (count2 == 2) {
+    } else if (_counterB == 2) {
       _scoreB = 30;
-    } else if (count2 == 3) {
+    } else if (_counterB == 3) {
+      deuceRequest();
       _scoreB = 40;
-    } else if (count2 == 4) {
+    } else if (_counterB == 4) {
       _scoreB = 0;
-    } else if (count2 == 5) {
+    } else if (_counterB == 5) {
       _scoreB = 15;
-    } else if (count2 == 6) {
+    } else if (_counterB == 6) {
       _scoreB = 30;
-    } else if (count2 == 7) {
+    } else if (_counterB == 7) {
       _scoreB = 40;
-    } else if (count2 == 8) {
+    } else if (_counterB == 8) {
       _scoreB = 0;
-    } else if (count2 == 9) {
+    } else if (_counterB == 9) {
       _scoreB = 15;
-    } else if (count2 == 10) {
+    } else if (_counterB == 10) {
       _scoreB = 30;
-    } else if (count2 == 11) {
+    } else if (_counterB == 11) {
       _scoreB = 40;
-    } else if (count2 == 12) {
+    } else if (_counterB == 12) {
       _scoreB = 0;
-    }
-    notifyListeners();
-  }
-
-  void backScoreB() {
-    if (_scoreB > 0) {
-      _count2--;
-      if (_count2 == 0) {
-        _scoreB = 0;
-      } else if (_count2 == 1) {
-        _scoreB = 15;
-      } else if (_count2 == 2) {
-        _scoreB = 30;
-      } else if (_count2 == 3) {
-        _scoreB = 40;
-      }
     }
     notifyListeners();
   }
@@ -152,8 +138,8 @@ class PuntosProvider with ChangeNotifier {
   void refresh() {
     _scoreA = 0;
     _scoreB = 0;
-    _count1 = 0;
-    _count2 = 0;
+    _counterA = 0;
+    _counterB = 0;
     _firstGame1 = false;
     _secondGame1 = false;
     _thirdGame1 = false;

@@ -2,7 +2,7 @@ import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:padel_record/provider/btnProvider.dart';
 import 'package:padel_record/provider/winnerProvider.dart';
-import 'package:padel_record/widgets/addRemoveBtns.dart';
+import 'package:padel_record/widgets/addBtn.dart';
 import 'package:padel_record/widgets/gameList.dart';
 import 'package:padel_record/widgets/teamGameScore.dart';
 import 'package:provider/provider.dart';
