@@ -12,14 +12,14 @@ class PuntosProvider with ChangeNotifier {
   int _gameTeamB = 0;
 
   bool _firstGameTeamA = false;
-  bool _secondGame1 = false;
+  bool _secondGameTeamA = false;
   bool _thirdGame1 = false;
   bool _fourthGame1 = false;
   bool _fifthGame1 = false;
   bool _sixthGame1 = false;
 
   bool _firstGameTeamB = false;
-  bool _secondGame2 = false;
+  bool _secondGameTeamB = false;
   bool _thirdGame2 = false;
   bool _fourthGame2 = false;
   bool _fifthGame2 = false;
@@ -41,15 +41,15 @@ class PuntosProvider with ChangeNotifier {
   int get gameTeamA => _gameTeamA;
   int get gameTeamB => _gameTeamB;
 
-  bool get firstGame1 => _firstGameTeamA;
-  bool get secondGame1 => _secondGame1;
+  bool get firstGameTeamA => _firstGameTeamA;
+  bool get secondGameTeamA => _secondGameTeamA;
   bool get thirdGame1 => _thirdGame1;
   bool get fourthGame1 => _fourthGame1;
   bool get fifthGame1 => _fifthGame1;
   bool get sixthGame1 => _sixthGame1;
 
-  bool get firstGame2 => _firstGameTeamB;
-  bool get secondGame2 => _secondGame2;
+  bool get firstGameTeamB => _firstGameTeamB;
+  bool get secondGameTeamB => _secondGameTeamB;
   bool get thirdGame2 => _thirdGame2;
   bool get fourthGame2 => _fourthGame2;
   bool get fifthGame2 => _fifthGame2;
@@ -80,7 +80,7 @@ class PuntosProvider with ChangeNotifier {
   }
   /// Añade puntos a Team A
   void addScoreA() {
-    if (_empate) {
+    if (_empate) {     ///TODO: adaptar el empate para 2 juegos
       if (_advA) {
         _scoreA = 0;
         _scoreB = 0;
@@ -95,7 +95,7 @@ class PuntosProvider with ChangeNotifier {
       } else {
         _advA = true;
       }
-    } else {
+    } else if (_game == 1){
       _counterA++;
       if (_counterA == 1) {
         _scoreA = 15;
@@ -108,6 +108,41 @@ class PuntosProvider with ChangeNotifier {
         _scoreA = 0;
         _scoreB = 0;
         _gameTeamA++;
+        if (_gameTeamA == 1){
+          _firstGameTeamA = true;
+        }
+      }
+    } else if (_game == 2){
+      _counterA++;
+      if (_counterA == 1) {
+        _scoreA = 15;
+      } else if (_counterA == 2) {
+        _scoreA = 30;
+      } else if (_counterA == 3) {
+        _scoreA = 40;
+        deuceRequest();
+      } else if (_counterA == 4) {
+        _scoreA = 0;
+        _scoreB = 0;
+        _gameTeamA++;
+        if (_gameTeamA == 1){
+          _firstGameTeamA = true;
+        }
+      } else if (_counterA == 5) {
+        _scoreA = 15;
+      } else if (_counterA == 6) {
+        _scoreA = 30;
+      } else if (_counterA == 7) {
+        _scoreA = 40;
+        deuceRequest();
+      } else if (_counterA == 8) {
+        _scoreA = 0;
+        _scoreB = 0;
+        _gameTeamA++;
+        if (_gameTeamA == 2){
+          _firstGameTeamA = true;
+          _secondGameTeamA = true;
+        }
       }
     }
     notifyListeners();
@@ -130,7 +165,7 @@ class PuntosProvider with ChangeNotifier {
       } else {
         _advB = true;
       }
-    } else {
+    } else if (_game == 1){
       _counterB++;
       if (_counterB == 1) {
         _scoreB = 15;
@@ -142,26 +177,59 @@ class PuntosProvider with ChangeNotifier {
       } else if (_counterB == 4) {
         _scoreA = 0;
         _scoreB = 0;
-        _counterA = 0;
-        _counterB = 0;
         _gameTeamB++;
+        if (_gameTeamB == 1){
+          _firstGameTeamB = true;
+        }
+      }
+    } else if (_game == 2){
+      _counterB++;
+      if (_counterB == 1) {
+        _scoreB = 15;
+      } else if (_counterB == 2) {
+        _scoreB = 30;
+      } else if (_counterB == 3) {
+        _scoreB = 40;
+        deuceRequest();
+      } else if (_counterB == 4) {
+        _scoreA = 0;
+        _scoreB = 0;
+        _gameTeamB++;
+        if (_gameTeamB == 1){
+          _firstGameTeamB = true;
+        }
+      } else if (_counterB == 5) {
+        _scoreB = 15;
+      } else if (_counterB == 6) {
+        _scoreB = 30;
+      } else if (_counterB == 7) {
+        _scoreB = 40;
+        deuceRequest();
+      } else if (_counterB == 8) {
+        _scoreA = 0;
+        _scoreB = 0;
+        _gameTeamB++;
+        if (_gameTeamB == 2){
+          _firstGameTeamB = true;
+          _secondGameTeamB = true;
+        }
       }
     }
     notifyListeners();
   }
-///TODO:añadir equipo B como ganador
+
   void refresh() {
     _scoreA = 0;
     _scoreB = 0;
     _counterA = 0;
     _counterB = 0;
     _firstGameTeamA = false;
-    _secondGame1 = false;
+    _secondGameTeamA = false;
     _thirdGame1 = false;
     _gameTeamA = 0;
     _gameTeamB = 0;
     _firstGameTeamB = false;
-    _secondGame2 = false;
+    _secondGameTeamB = false;
     _thirdGame2 = false;
 
     _advA = false;
@@ -173,6 +241,7 @@ class PuntosProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  ///Añadir juegos a la partida
   void addGame() {
     if (_game < 6) {
       _game++;
@@ -187,16 +256,17 @@ class PuntosProvider with ChangeNotifier {
     }
     notifyListeners();
   }
+//////////////////////////////
 
   void gameA(int count) {
     if (count == 3) {
       _firstGameTeamA = true;
     } else if (count == 7) {
       _firstGameTeamA = true;
-      _secondGame1 = true;
+      _secondGameTeamA = true;
     } else if (count == 11) {
       _firstGameTeamA = true;
-      _secondGame1 = true;
+      _secondGameTeamA = true;
       _thirdGame1 = true;
     }
     notifyListeners();
@@ -207,10 +277,10 @@ class PuntosProvider with ChangeNotifier {
       _firstGameTeamB = true;
     } else if (count == 7) {
       _firstGameTeamB = true;
-      _secondGame2 = true;
+      _secondGameTeamB = true;
     } else if (count == 11) {
       _firstGameTeamB = true;
-      _secondGame2 = true;
+      _secondGameTeamB = true;
       _thirdGame2 = true;
     }
     notifyListeners();
@@ -219,7 +289,7 @@ class PuntosProvider with ChangeNotifier {
   void gameByTeam() {
     if (_firstGameTeamA == true) {
       _gameTeamA = 1;
-    } else if (_secondGame1 == true) {
+    } else if (_secondGameTeamA == true) {
       _gameTeamA = 2;
     } else if (_thirdGame1 == true) {
       _gameTeamA = 3;
@@ -227,7 +297,7 @@ class PuntosProvider with ChangeNotifier {
 
     if (_firstGameTeamB == true) {
       _gameTeamB = 1;
-    } else if (_secondGame2 == true) {
+    } else if (_secondGameTeamB == true) {
       _gameTeamB = 2;
     } else if (_thirdGame2 == true) {
       _gameTeamB = 3;

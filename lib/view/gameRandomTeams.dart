@@ -143,11 +143,11 @@ class GameRandomTeams extends StatelessWidget {
                       Column(
                         children: [
                           Visibility(
-                              visible: puntosProvider.firstGame1 ? true:false,
+                              visible: puntosProvider.firstGameTeamA ? true:false,
                               child: Text('1er Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700),)),
                           const SizedBox(height: 10,),
                           Visibility(
-                              visible: puntosProvider.secondGame1 ? true:false,
+                              visible: puntosProvider.secondGameTeamA ? true:false,
                               child: Text('2do Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700),)),
                           const SizedBox(height: 10,),
                           Visibility(
@@ -158,11 +158,11 @@ class GameRandomTeams extends StatelessWidget {
                       Column(
                         children: [
                           Visibility(
-                              visible: puntosProvider.firstGame2 ? true:false,
+                              visible: puntosProvider.firstGameTeamB ? true:false,
                               child: Text('1er Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700),)),
                           const SizedBox(height: 10,),
                           Visibility(
-                              visible: puntosProvider.secondGame2 ? true:false,
+                              visible: puntosProvider.secondGameTeamB ? true:false,
                               child: Text('2do Set', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.w600, color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700),)),
                           const SizedBox(height: 10,),
                           Visibility(

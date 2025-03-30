@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:padel_record/provider/btnProvider.dart';
 import 'package:padel_record/widgets/teamAWinnerWidget.dart';
+import 'package:padel_record/widgets/teamBWidgetWinner.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/playerProvider.dart';
@@ -46,7 +47,16 @@ Widget _teamABtn(context) {
         onPressed: (){
           puntosProvider.addScoreA();
           print('Counter A: ${puntosProvider.counterA}');
-          if(puntosProvider.counterA==4) {
+          if(puntosProvider.firstGameTeamA && puntosProvider.game == 1) {
+            puntosProvider.startConfetti();
+            winnerProvider.addWinner(
+                playerProvider.playersTeamA[0], playerProvider.playersTeamA[1],
+                puntosProvider.gameTeamA);
+            showDialog(context: context, builder: (_) {
+              return TeamAWinnerWidget(playerProvider: playerProvider,);
+            });
+          } else if(puntosProvider.secondGameTeamA && puntosProvider.game == 2) {
+            puntosProvider.startConfetti();
             winnerProvider.addWinner(
                 playerProvider.playersTeamA[0], playerProvider.playersTeamA[1],
                 puntosProvider.gameTeamA);
@@ -62,6 +72,8 @@ Widget _teamABtn(context) {
 Widget _teamBBtn(context) {
 
   final puntosProvider = Provider.of<PuntosProvider>(context);
+  final playerProvider = Provider.of<PlayerProvider>(context);
+  final winnerProvider = Provider.of<WinnerProvider>(context);
 
   return Container(
     height: 50,
@@ -74,6 +86,23 @@ Widget _teamBBtn(context) {
         onPressed: (){
           puntosProvider.addScoreB();
           print('Counter B: ${puntosProvider.counterB}');
+          if(puntosProvider.firstGameTeamB && puntosProvider.game == 1) {
+            puntosProvider.startConfetti();
+            winnerProvider.addWinner(
+                playerProvider.playersTeamB[0], playerProvider.playersTeamB[1],
+                puntosProvider.gameTeamB);
+            showDialog(context: context, builder: (_) {
+              return TeamBWinnerWidget(playerProvider: playerProvider,);
+            });
+          } else if(puntosProvider.secondGameTeamB && puntosProvider.game == 2) {
+            puntosProvider.startConfetti();
+            winnerProvider.addWinner(
+                playerProvider.playersTeamB[0], playerProvider.playersTeamB[1],
+                puntosProvider.gameTeamB);
+            showDialog(context: context, builder: (_) {
+              return TeamBWinnerWidget(playerProvider: playerProvider,);
+            });
+          }
         },
         icon: const Icon(Icons.add, color: Colors.white,)),
   );

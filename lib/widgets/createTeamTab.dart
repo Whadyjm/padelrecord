@@ -4,6 +4,7 @@ import 'package:padel_record/provider/playerProvider.dart';
 import 'package:padel_record/provider/puntosProvider.dart';
 import 'package:padel_record/view/gameScreen.dart';
 import 'package:padel_record/widgets/playerTextField.dart';
+import 'package:padel_record/widgets/startGameBtn.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/winnerProvider.dart';
@@ -182,44 +183,9 @@ class CreateTeamTab extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 50,),
-            MaterialButton(
-              onPressed: (){
-                startGame(puntosProvider, winnerProvider, playerProvider, btnProvider, context);
-              },
-              child: Container(
-                  height: 50,
-                  width: 250,
-                  decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(12)
-                  ),
-                  child: const Center(child: Text('Iniciar partida', style: TextStyle(fontFamily: 'sf-pro-display', fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),))),
-            ),
+            const StartGameBtn(),
           ],
         ),
-      ),
-    );
-  }
-
-  void startGame(PuntosProvider puntosProvider, WinnerProvider winnerProvider, PlayerProvider playerProvider, BtnProvider btnProvider, BuildContext context) {
-    puntosProvider.refresh();
-    winnerProvider.clearWinner();
-
-    if (playerProvider.playersTeamA.length + playerProvider.playersTeamB.length == 4){
-      btnProvider.fixedTeamsGameTrue();
-      Navigator.push(context, MaterialPageRoute(builder: (context){
-        return GameScreen();
-      }));
-    } else {
-      snackbar4(context);
-    }
-  }
-
-  void snackbar4(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        duration: Duration(seconds: 1),
-        content: Text('Se necesitan al menos 4 jugadores'),
       ),
     );
   }
