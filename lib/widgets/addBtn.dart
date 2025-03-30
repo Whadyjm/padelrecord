@@ -2,9 +2,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:padel_record/provider/btnProvider.dart';
+import 'package:padel_record/widgets/teamAWinnerWidget.dart';
 import 'package:provider/provider.dart';
 
+import '../provider/playerProvider.dart';
 import '../provider/puntosProvider.dart';
+import '../provider/winnerProvider.dart';
 
 class AddRemoveBtns extends StatelessWidget {
   const AddRemoveBtns({super.key});
@@ -29,6 +32,8 @@ class AddRemoveBtns extends StatelessWidget {
 Widget _teamABtn(context) {
 
   final puntosProvider = Provider.of<PuntosProvider>(context);
+  final playerProvider = Provider.of<PlayerProvider>(context);
+  final winnerProvider = Provider.of<WinnerProvider>(context);
 
   return Container(
     height: 50,
@@ -41,6 +46,14 @@ Widget _teamABtn(context) {
         onPressed: (){
           puntosProvider.addScoreA();
           print('Counter A: ${puntosProvider.counterA}');
+          if(puntosProvider.counterA==4) {
+            winnerProvider.addWinner(
+                playerProvider.playersTeamA[0], playerProvider.playersTeamA[1],
+                puntosProvider.gameTeamA);
+            showDialog(context: context, builder: (_) {
+              return TeamAWinnerWidget(playerProvider: playerProvider,);
+            });
+          }
         },
         icon: const Icon(Icons.add, color: Colors.white,)),
   );

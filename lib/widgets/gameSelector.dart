@@ -27,7 +27,7 @@ class GameSelector extends StatelessWidget {
               const Text('Juegos', style: TextStyle(fontFamily: 'sf-pro-display', fontWeight: FontWeight.bold, fontSize: 18),),
               const VerticalDivider(thickness: 1,),
               IconButton(onPressed: (){
-                puntosProvider.removeSet();
+                puntosProvider.removeGame();
               }, icon: const Icon(Icons.remove)),
               Center(child: Text('${puntosProvider.game}',
                 style: TextStyle(fontFamily: 'sf-pro-display', color: btnProvider.darkMode ? Colors.white70:Colors.grey.shade700, fontSize: 20, fontWeight: FontWeight.w700),)),

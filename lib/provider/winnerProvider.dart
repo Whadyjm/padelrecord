@@ -9,8 +9,8 @@ class WinnerProvider with ChangeNotifier{
   List<WinnerModel> get winner => _winner;
 
 
-  void addWinner(player1, player2, sets){
-    _winner.add(WinnerModel(player1: player1.toString(), player2: player2.toString(), sets: sets.toString()));
+  void addWinner(player1, player2, games){
+    _winner.add(WinnerModel(player1: player1.toString(), player2: player2.toString(), games: games.toString()));
 
     notifyListeners();
   }
